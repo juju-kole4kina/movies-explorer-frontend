@@ -1,5 +1,6 @@
 import '../../index.css';
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
