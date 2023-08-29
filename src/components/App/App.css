@@ -23,7 +23,7 @@
   opacity: 0.8;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 780px) {
   .page {
     font-size: 12px;
     line-height: 1.5;
