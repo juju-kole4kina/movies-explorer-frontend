@@ -3,7 +3,6 @@
   justify-content: space-between;
   padding-top: 75px;
   padding-bottom: 75px;
-  width: 100%;
   color: rgba(255, 255, 255, 1);
   background-color: rgba(70, 93, 255, 1);
 }
@@ -13,11 +12,11 @@
   flex-direction: column;
   align-items: start;
   margin-right: 10px;
-  max-width: 640px;
+  max-width: 635px;
 }
 
 .propmo__title {
-  margin: 0 0 36px;
+  margin: 0 0 37px;
   padding: 0;
   font-weight: 400;
   font-size: 50px;
@@ -29,13 +28,15 @@
   padding: 0;
   max-width: 310px;
   font-size: 13px;
-  line-height: 1;
+  line-height: 1.2;
   opacity: 0.5;
 }
 
 .promo__logo {
-  width: 310px;
-  height: 304px;
+  margin: 0;
+  padding: 0;
+  max-width: 310px;
+  max-height: 304px;
 }
 
 .promo__more-button {

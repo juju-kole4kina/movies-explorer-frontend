@@ -17,6 +17,7 @@
 
 .section-container {
   padding: 0 70px;
+  max-width: 1280px;
 }
 
 .link-hover:hover {
