@@ -1,0 +1,127 @@
+.about-me {
+  padding-top: 110px;
+  padding-bottom: 50px;
+}
+
+.about-me__content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.about-me__text-content {
+  margin-right: 10px;
+  max-width: 600px;
+}
+
+.about-me__subtitle {
+  margin: 0 0 18px;
+  padding: 0;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 1.16;
+  letter-spacing: -2px;
+}
+
+.about-me__description {
+  margin: 0 0 26px;
+  padding: 0;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.11;
+}
+
+.about-me__text {
+  margin: 0 0 100px;
+  padding: 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.57;
+}
+
+.about-me__link {
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 1);
+  transition: opacity 0.3s ease;
+}
+
+.about-me__photo {
+  border-radius: 10px;
+  max-height: 327px;
+}
+
+@media (max-width: 768px) {
+  .about-me {
+    padding-top: 90px;
+    padding-bottom: 45px;
+  }
+
+  .about-me__text-content {
+    max-width: 364px;
+  }
+
+  .about-me__subtitle {
+    margin: 0 0 16px;
+    font-size: 40px;
+    line-height: 1;
+    letter-spacing: -1.6px;
+  }
+
+  .about-me__description {
+    margin: 0 0 20px;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .about-me__text {
+    margin: 0 0 87px;
+    font-size: 12px;
+    line-height: 1.55;
+  }
+
+  .about-me__photo {
+    max-height: 307px;
+  }
+}
+
+@media (max-width: 460px) {
+  .about-me {
+    padding-top: 70px;
+    padding-bottom: 35px;
+  }
+
+  .about-me__content {
+    flex-direction: column-reverse;
+  }
+
+  .about-me__text-content {
+    max-width: 292px;
+  }
+
+  .about-me__subtitle {
+    margin: 0 0 20px;
+    font-size: 30px;
+    letter-spacing: -1.2px;
+  }
+
+  .about-me__description {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .about-me__text {
+    margin: 0 0 40px;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  .about-me__photo {
+    margin: 0 0 40px;
+    max-width: 292px;
+    max-height: 352px;
+  }
+}
