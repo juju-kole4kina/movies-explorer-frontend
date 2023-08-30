@@ -15,7 +15,7 @@ import Footer from '../Footer/Footer';
 
 function App() {
   return(
-    <div className="page section-container">
+    <div className="page">
       <Header />
       <Routes>
         <Route path='/' element={<Main />} />

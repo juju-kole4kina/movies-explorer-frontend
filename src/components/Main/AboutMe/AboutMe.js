@@ -8,7 +8,7 @@ import Title from '../Title/Title';
 
 function AboutMe(props) {
   return(
-    <section className="about-me section-conatiner">
+    <section className="about-me section-container">
       <Title title="Студент" />
       <div className="about-me__content">
         <article className="about-me__text-content">
