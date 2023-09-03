@@ -6,7 +6,7 @@ import logo from '../../images/icons/icon-logo-min.svg';
 
 function Header(props) {
   const location = useLocation();
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
  const toggleMenu = () => {

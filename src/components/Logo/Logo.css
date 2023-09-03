@@ -1,0 +1,6 @@
+.logo {
+  display: flex;
+  justify-content: start;
+  margin-bottom: 40px;
+  width: 100%;
+}
