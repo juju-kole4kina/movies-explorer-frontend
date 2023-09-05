@@ -90,6 +90,14 @@
   transition: opacity 0.3s ease;
 }
 
+.menu__link_color_white {
+  color: rgba(255, 255, 255, 1);
+}
+
+.menu__link_color_black {
+  color: rgba(0, 0, 0, 1);
+}
+
 .menu__link_active {
   font-weight: 500;
 }
@@ -157,6 +165,10 @@
     transform: scale(1) translate(0, -50%);
   }
 
+  .header__burger-menu_display_none {
+    display: none;
+  }
+
   .header__burger-menu_active span {
     transform: scale(0) translate(0, -50%);
   }
@@ -207,7 +219,11 @@
     color: rgba(0, 0, 0, 1);
   }
 
-  .menu {
+  .menu__menu-list_isNotLogged {
+
+  }
+
+  .menu_isLogged {
     position: fixed;
     right: 0;
     top: 0;
