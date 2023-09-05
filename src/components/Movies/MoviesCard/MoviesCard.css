@@ -1,0 +1,93 @@
+.movie-card {
+  margin: 0;
+  padding: 0;
+  width: 364px;
+  height: 271px;
+  box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.08);
+  background-color: rgba(253, 253, 253, 1);
+}
+
+.movie-card__link {
+  text-decoration: none;
+}
+
+.movie-card__text-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  padding: 14px;
+}
+
+.movie-card__info {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  gap: 9px;
+}
+
+.movie-card__title {
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1;
+  color: rgba(0, 0, 0, 1);
+}
+
+.movie-card__movie-timeline {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1;
+  color: rgba(160, 160, 160, 1);
+}
+
+.movie-card__button {
+  margin: 0;
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+  width: 38px;
+  height: 38px;
+  background-image: url('../../../images/icons/icon-favorites-unactive.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(249, 249, 249, 1);
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.movie-card__button_active {
+  background-image: url('../../../images/icons/icon-favorites-min.svg');
+  background-color: rgba(43, 224, 128, 1);
+}
+
+.movie-card__button_delete {
+  background-image: url('../../../images/icons/icon-delete-card.svg');
+}
+
+.movie-card__image {}
+
+@media (max-width: 768px) {
+  .movie-card {
+    width: 339px;
+    height: 258px;
+  }
+
+  .movie-card__button {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 320px) {
+  .movie-card {
+    width: 300px;
+    height: 236px;
+  }
+}
