@@ -9,9 +9,9 @@ function Header(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
- const toggleMenu = () => {
-  setMobileMenuOpen(!isMobileMenuOpen);
- }
+  const toggleMenu = () => {
+    setMobileMenuOpen(!isMobileMenuOpen);
+  }
 
   const isLoggedNav = (
     <ul className={`menu__menu-list menu__menu-list_isLogged ${isMobileMenuOpen ? "menu__menu-list_isLogged_active" : ""}`}>
