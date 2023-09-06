@@ -1,0 +1,42 @@
+.movie-list-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 80px;
+}
+
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  list-style: none;
+  margin: 0 0 50px;
+  padding: 0;
+  gap: 30px 24px;
+}
+
+.movie-list__item {
+  margin: 0;
+  padding: 0;
+}
+
+.button_type_more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  border: none;
+  border-radius: 6px;
+  padding: 0;
+  width: 100%;
+  height: 36px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1;
+  background-color: rgba(249, 249, 249, 1);
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.button_type_more-disabled {
+  display: none;
+}

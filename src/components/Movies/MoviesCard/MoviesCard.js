@@ -13,7 +13,8 @@ function MoviesCard(props) {
   }
 
   return(
-    <article className="movie-card" aria-label="Карточка фильма">
+    <li className="movie-list__item">
+      <article className="movie-card" aria-label="Карточка фильма">
       <div className="movie-card__text-block">
         <div className="movie-card__info">
           <h3 className="movie-card__title">{props.cardName}</h3>
@@ -24,8 +25,8 @@ function MoviesCard(props) {
       <Link to={props.link} className="movie-card__link" target="_blank">
       <img className="movie-card__image" alt={props.alt} src={props.img} />
       </Link>
-
     </article>
+    </li>
   );
 }
 
