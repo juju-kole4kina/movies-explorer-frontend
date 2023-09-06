@@ -43,12 +43,13 @@
   .promo {
     flex-direction: column-reverse;
     align-items: center;
-    padding-top: 70px;
-    padding-bottom: 20px;
+    padding-top: 140px;
+    padding-bottom: 77px;
   }
 
   .promo__content {
     align-items: center;
+    margin: 0;
   }
 
   .propmo__title {

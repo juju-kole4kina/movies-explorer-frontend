@@ -1,6 +1,5 @@
 .about-project {
-  padding-top: 114px;
-  padding-bottom: 97px;
+  padding: 114px 50px 97px;
 }
 
 .about-project__description {
@@ -54,8 +53,6 @@
   background-color: rgba(242, 242, 242, 1);
 }
 
-.timeline-table__table-row_stek {}
-
 .timeline-table__item {
   font-weight: 400;
   font-size: 14px;
@@ -77,8 +74,7 @@
 
 @media (max-width: 768px) {
   .about-project {
-    padding-top: 90px;
-    padding-bottom: 90px;
+    padding: 94px 50px 77px;
   }
 
   .about-project__description {
@@ -86,7 +82,8 @@
   }
 
   .project-description__column {
-    row-gap: 22px;
+    max-width: 319px;
+    row-gap: 27px;
   }
 
   .description__text {

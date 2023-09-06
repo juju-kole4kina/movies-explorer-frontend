@@ -54,16 +54,15 @@
 
 @media (max-width: 768px) {
   .techs {
-    padding-top: 90px;
-    padding-bottom: 90px;
+    padding: 94px 50px 90px;
   }
 
   .techs__content {
-    padding-top: 20px;
+    padding-top: 8px;
   }
 
   .techs__subtitle {
-    margin: 0 0 24px;
+    margin: 0 0 22px;
   }
 
   .techs__description {

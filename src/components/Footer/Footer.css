@@ -62,6 +62,21 @@
   transition: opacity 0.3s ease;
 }
 
+@media (max-width: 768px) {
+  .footer {
+    padding-top: 60px;
+    padding-bottom: 15px;
+  }
+
+  .line {
+    margin: 16px 0;
+  }
+
+  .row-bottom {
+    padding-top: 5px;
+  }
+}
+
 @media (max-width: 365px) {
   .footer {
     padding: 0;

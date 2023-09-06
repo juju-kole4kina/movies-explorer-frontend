@@ -53,7 +53,7 @@
 
 @media (max-width: 768px) {
   .portfolio {
-    padding-bottom: 90px;
+    padding: 45px 50px 90px;
   }
 
   .portfolio__project-type {

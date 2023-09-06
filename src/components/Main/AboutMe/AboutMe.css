@@ -57,8 +57,7 @@
 
 @media (max-width: 768px) {
   .about-me {
-    padding-top: 90px;
-    padding-bottom: 45px;
+    padding: 94px 50px 45px;
   }
 
   .about-me__text-content {
@@ -66,25 +65,26 @@
   }
 
   .about-me__subtitle {
-    margin: 0 0 16px;
+    margin: 0 0 15px;
     font-size: 40px;
     line-height: 1;
     letter-spacing: -1.6px;
   }
 
   .about-me__description {
-    margin: 0 0 20px;
+    margin: 0 0 19px;
     font-size: 12px;
     line-height: 1.5;
   }
 
   .about-me__text {
-    margin: 0 0 87px;
+    margin: 0 0 85px;
     font-size: 12px;
     line-height: 1.55;
   }
 
   .about-me__photo {
+    width: 255px;
     max-height: 307px;
   }
 }
