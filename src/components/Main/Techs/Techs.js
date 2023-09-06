@@ -6,9 +6,9 @@ import Title from '../Title/Title';
 
 function Techs(props) {
   return(
-    <section className="techs section-container">
+    <section className="techs section-container" aria-label="Технологии">
       <Title title="Технологии" />
-      <article className="techs__content">
+      <article className="techs__content" aria-label="Технологии">
         <h3 className="techs__subtitle">7 технологий</h3>
         <p className="techs__description">На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</p>
         <ul className="techs__stek-list">

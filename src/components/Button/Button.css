@@ -5,9 +5,12 @@
   margin: 0;
   border: none;
   padding: 0;
-  opacity: 0.8;
   transition: opacity 0.3s ease;
   cursor: pointer;
+}
+
+.button:hover {
+  opacity: 0.8;
 }
 
 .button_type_more {
@@ -58,19 +61,19 @@
   border-radius: 50%;
   width: 38px;
   height: 38px;
-  background-image: url('../../../images/icons/icon-favorites-unactive.svg');
+  background-image: url('../../images/icons/icon-favorites-unactive.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-color: rgba(249, 249, 249, 1);
 }
 
 .button_type_save-card-active {
-  background-image: url('../../../images/icons/icon-favorites-min.svg');
+  background-image: url('../../images/icons/icon-favorites-min.svg');
   background-color: rgba(43, 224, 128, 1);
 }
 
 .button_type_delete-card {
-  background-image: url('../../../images/icons/icon-delete-card.svg');
+  background-image: url('../../images/icons/icon-delete-card.svg');
 }
 
 .button_type_edit-profile {

@@ -4,6 +4,7 @@ import { NavLink, useLocation} from 'react-router-dom';
 import './Header.css';
 import logo from '../../images/icons/icon-logo-min.svg';
 
+
 function Header(props) {
   const location = useLocation();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -41,7 +42,6 @@ function Header(props) {
       <div className={`header__burger-menu link-hover ${!isLoggedIn ? "header__burger-menu_display_none" : ""} ${isMobileMenuOpen ? "header__burger-menu_active" : ""}`} onClick={toggleMenu}>
         <span></span>
       </div>
-
       <nav className={`menu ${isMobileMenuOpen ? "menu_mobile-menu-active" : ""} ${isLoggedIn ? "menu_isLogged" : ""}`}>
         {isLoggedIn ? isLoggedNav : isNotLoggedNav}
       </nav>

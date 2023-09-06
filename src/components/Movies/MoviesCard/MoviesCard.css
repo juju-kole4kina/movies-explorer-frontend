@@ -47,41 +47,46 @@
   color: rgba(160, 160, 160, 1);
 }
 
-.movie-card__button {
+.movie-card__image {}
+
+/* ============= */
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 0;
   border: none;
-  border-radius: 50%;
   padding: 0;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.button_type_save-card {
+  border-radius: 50%;
   width: 38px;
   height: 38px;
   background-image: url('../../../images/icons/icon-favorites-unactive.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-color: rgba(249, 249, 249, 1);
-  transition: opacity 0.3s ease;
-  cursor: pointer;
 }
 
-.movie-card__button_active {
+.button_type_save-card-active {
   background-image: url('../../../images/icons/icon-favorites-min.svg');
   background-color: rgba(43, 224, 128, 1);
 }
 
-.movie-card__button_delete {
+.button_type_delete-card {
   background-image: url('../../../images/icons/icon-delete-card.svg');
 }
 
-.movie-card__image {}
+/* ================ */
 
 @media (max-width: 768px) {
   .movie-card {
     width: 339px;
     height: 258px;
-  }
-
-  .movie-card__button {
-    width: 30px;
-    height: 30px;
   }
 }
 

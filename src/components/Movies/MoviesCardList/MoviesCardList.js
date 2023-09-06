@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './MoviesCardList.css';
+import Button from '../../Button/Button';
 
 function MoviesCardList(props) {
 
@@ -11,7 +12,7 @@ function MoviesCardList(props) {
       <ul className="movie-list">
         {props.children}
       </ul>
-      <button type="button" className="button button_type_more button-hover" onClick={handleShowMore}>Ещё</button>
+        <Button type="button" className="button_type_more" onClick={handleShowMore} buttonText="Ещё" />
     </section>
   );
 }

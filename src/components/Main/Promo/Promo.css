@@ -39,21 +39,6 @@
   max-height: 304px;
 }
 
-.promo__more-button {
-  margin-top: 146px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 3px;
-  width: 129px;
-  height: 36px;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.33;
-  color: rgba(255, 255, 255, 1);
-  background-color: transparent;
-  transition: opacity 0.3s ease;
-  cursor: pointer;
-}
-
 @media (max-width: 768px) {
   .promo {
     flex-direction: column-reverse;
@@ -91,9 +76,5 @@
   .promo__logo {
     width: 210px;
     height: 206px;
-  }
-
-  .promo__more-button {
-    margin-top: 90px;
   }
 }

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import './Searchform.css';
 import arrow from '../../../images/icons/icon-arrow-right-min.svg';
 import FilterCheckbox from './FilterCheckbox/FilterCheckbox';
+import Button from '../../Button/Button';
 
 function SearchForm(props) {
   const [isSearchText, setSearchText] = useState('');
@@ -15,7 +16,7 @@ function SearchForm(props) {
       <form className="seach-form__input-container">
         <div className="seach-form__icon"></div>
         <input type="text" value={isSearchText} onChange={handleChangeSearchText} className="seach-form__input" placeholder="Фильм" />
-        <button type="subbmit" className="search-form__submit-button button-hover"><img className="button__icon" src={arrow} alt="Кнопка поиска" /></button>
+        <Button type="submit" className="button_type_search" buttonText={<img className="button__icon" src={arrow} alt="Кнопка поиска" />} />
       </form>
       <FilterCheckbox />
     </section>
