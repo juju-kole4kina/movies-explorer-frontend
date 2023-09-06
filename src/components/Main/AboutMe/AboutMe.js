@@ -9,7 +9,7 @@ import Title from '../Title/Title';
 function AboutMe(props) {
   return(
     <section className="about-me section-container" aria-label="Обо мне">
-      <Title title="Студент" />
+      <Title title="Студент" type="section-title_type_about-me" />
       <div className="about-me__content">
         <article className="about-me__text-content">
         <h3 className="about-me__subtitle">Юлия</h3>

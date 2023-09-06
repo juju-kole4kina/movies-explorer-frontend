@@ -13,6 +13,7 @@
 
 .row-bottom {
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -26,7 +27,7 @@
 }
 
 .line {
-  margin: 20px 0;
+  margin: 18px 0;
   height: 1px;
   background-color: rgba(232, 232, 232, 1);
 }

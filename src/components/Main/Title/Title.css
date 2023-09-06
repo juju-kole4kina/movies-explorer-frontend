@@ -10,6 +10,10 @@
   color: rgba(0, 0, 0, 1);
 }
 
+.section-title_type_about-me {
+  margin: 0 0 67px;
+}
+
 @media (max-width: 468px) {
   .section-title {
     margin-bottom: 60px;

@@ -1,6 +1,6 @@
 .portfolio {
-  padding-top: 45px;
-  padding-bottom: 125px;
+  padding-top: 49px;
+  padding-bottom: 105px;
 }
 
 .portfolio__title {
@@ -25,8 +25,11 @@
   display: flex;
   justify-content: space-between;
   margin: 0;
+  padding: 0 0 9px;
+}
+
+.portfolio__project-item:not(:last-of-type) {
   border-bottom: 1px solid rgba(232, 232, 232, 1);
-  padding: 0 0 19px;
 }
 
 .portfolio__project-type {
