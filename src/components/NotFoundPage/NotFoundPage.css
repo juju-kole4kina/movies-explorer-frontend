@@ -57,3 +57,29 @@
     margin-bottom: 222px;
   }
 }
+
+@media (max-width: 768px) {
+  .not-found-page {
+    height: 780px;
+  }
+
+  .not-found-page__title {
+    margin: 329px 0 0;
+    max-width: 400px;
+    gap: 10px;
+  }
+
+  .not-found-page__err-code {
+    font-size: 80px;
+  }
+
+  .not-found-page__err-message {
+    margin: 0;
+    font-size: 12px;
+  }
+
+  .button_type_to-main {
+    margin: auto 0 30px;
+    font-size: 12px;
+  }
+}
