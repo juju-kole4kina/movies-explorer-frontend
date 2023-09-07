@@ -11,4 +11,9 @@
   }
 }
 
-@media (max-width: 320px) {}
+@media (max-width: 320px) {
+  .register-page {
+    padding-top: 26px;
+    height: 780px;
+  }
+}
