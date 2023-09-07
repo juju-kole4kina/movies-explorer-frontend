@@ -103,3 +103,29 @@
 .form__footer_type_login {}
 
 .form__footer_type_profile {}
+
+@media (max-width: 768px) {
+  .form__title {
+    margin-bottom: 40px;
+  }
+
+  .form__footer {
+    margin: 16px 0 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: normal;
+    text-align: center;
+    color: rgba(160, 160, 160, 1);
+  }
+
+  .form__footer-link {
+    margin: 0 0 0 6px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: normal;
+    text-decoration: none;
+    color: rgba(255, 104, 56, 1);
+  }
+}
+
+@media (max-width: 320px) {}

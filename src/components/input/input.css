@@ -139,3 +139,11 @@
 .input__input-error_type_profile {
   display: none;
 }
+
+@media (max-width: 768px) {
+  .input__input-error {
+    margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 320px) {}

@@ -4,3 +4,11 @@
   margin-bottom: 37px;
   width: 100%;
 }
+
+@media (max-width: 768px) {
+  .logo {
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 320px) {}
