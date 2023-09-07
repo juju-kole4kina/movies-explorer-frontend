@@ -145,3 +145,19 @@
     line-height: 1;
   }
 }
+
+@media (max-width: 320px) {
+  .about-project {
+    padding: 73px 18px 70px;
+  }
+
+  .about-project__description {
+    margin-bottom: 55px;
+  }
+
+  .project-description__column {
+    margin: 0;
+    row-gap: 15px;
+  }
+
+}

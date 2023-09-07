@@ -127,3 +127,19 @@
     max-height: 352px;
   }
 }
+
+@media (max-width: 320px) {
+  .about-me {
+    padding: 70px 14px 35px;
+  }
+
+  .about-me__photo {
+    margin: 0 0 43px;
+    width: 100%;
+    max-height: 352px;
+  }
+
+  .about-me__subtitle {
+    margin: 0 0 23px;
+  }
+}

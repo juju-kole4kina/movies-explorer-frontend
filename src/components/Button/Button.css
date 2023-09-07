@@ -122,3 +122,9 @@
     margin-top: 90px;
   }
 }
+
+@media (max-width: 320px) {
+  .button_type_learn-more {
+    margin-top: 80px;
+  }
+}

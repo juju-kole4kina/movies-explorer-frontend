@@ -79,28 +79,40 @@
 
 @media (max-width: 365px) {
   .footer {
-    padding: 0;
+    padding-top: 0;
     max-height: 253px;
   }
 
   .footer__subtitle {
-    margin-top: 79px;
+    margin-top: 64px;
     font-size: 12px;
     line-height: 1;
+  }
+
+  .line {
+    margin: 22px 0;
   }
 
   .row-bottom {
     flex-direction: column-reverse;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 20px;
-    row-gap: 30px;
+    padding-top: 9px;
+    row-gap: 28px;
+  }
+
+  .footer__copyrigth {
+    font-size: 12px;
+    color: rgba(160, 160, 160, 1);
   }
 
   .footer__link-list {
     flex-direction: column;
     align-items: center;
-    font-size: 12px;
     row-gap: 12px;
+  }
+
+  .footer__link {
+    font-size: 12px;
   }
 }

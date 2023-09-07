@@ -89,3 +89,13 @@
     letter-spacing: -0.72px;
   }
 }
+
+@media (max-width: 320px) {
+  .portfolio {
+    padding: 33px 14px 70px;
+  }
+
+  .portfolio__project-item {
+    padding: 0 0 15px;
+  }
+}

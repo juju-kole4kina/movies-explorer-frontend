@@ -79,3 +79,14 @@
     height: 206px;
   }
 }
+
+@media (max-width: 320px) {
+  .promo {
+    padding-top: 70px;
+    padding-bottom: 31px;
+  }
+
+  .promo__logo {
+    margin-bottom: 45px;
+  }
+}

@@ -258,3 +258,19 @@
     padding-bottom: 7px;
   }
 }
+
+@media (max-width: 320px) {
+  .menu__menu-list {
+    column-gap: 15px;
+  }
+
+  .menu__link {
+    font-size: 10px;
+    line-height: 1.68;
+  }
+
+  .menu__link_login-button {
+    width: 54px;
+    height: 26px;
+  }
+}
