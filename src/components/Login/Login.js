@@ -10,7 +10,7 @@ function Login(props) {
       <Form
         name="login"
         title="Рады видеть!"
-        buttonText="Зарегистрироваться"
+        buttonText="Войти"
         text="Ещё не зарегистрированы?"
         endpoint="/signup"
         linkText="Регистрация"

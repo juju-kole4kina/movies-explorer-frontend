@@ -1,6 +1,19 @@
 .login-page {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+  margin: 0 auto;
+  padding-top: 70px;
+  height: 700px;
+}
+
+@media (max-width: 768px) {
+  .login-page {
+    padding-top: 232px;
+    height: 1024px;
+  }
+}
+
+@media (max-width: 320px) {
+  .login-page {
+    padding-top: 26px;
+    height: 780px;
+  }
 }
