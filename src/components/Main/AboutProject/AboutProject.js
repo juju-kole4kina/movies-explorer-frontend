@@ -6,7 +6,7 @@ import Title from '../Title/Title';
 
 function AboutProject(props) {
   return(
-    <section className="about-project section-container" aria-label="О проекте">
+    <section className="about-project section-container" id="about-project" aria-label="О проекте">
       <Title title="О проекте" />
       <div className="about-project__description">
         <article className="project-description__column">

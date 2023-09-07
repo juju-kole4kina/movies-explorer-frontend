@@ -7,7 +7,7 @@ import logo from '../../images/icons/icon-logo-min.svg';
 
 function Header(props) {
   const location = useLocation();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -18,7 +18,7 @@ function Header(props) {
     <ul className={`menu__menu-list menu__menu-list_isLogged ${isMobileMenuOpen ? "menu__menu-list_isLogged_active" : ""}`}>
       <li className="menu__item menu__item_rigth-menu">
         <ul className="menu-rigth__menu-list">
-          {location.pathname !== '/' && <li className="menu__item"><NavLink to="/" className={({isActive}) => `menu__link ${isActive ? "menu__link_active" : ""}`}>Фильмы</NavLink></li>}
+          {location.pathname !== '/' && <li className="menu__item"><NavLink to="/" className={({isActive}) => `menu__link ${isActive ? "menu__link_active" : ""}`}>Главная</NavLink></li>}
           <li className="menu__item"><NavLink to="/movies" className={({isActive}) => `menu__link link-hover ${isActive ? "menu__link_active" : ""} ${location.pathname === '/' ? "menu__link_color_white" : "menu__link_color_black"}`}>Фильмы</NavLink></li>
           <li className="menu__item"><NavLink to="/saved-movies" className={({isActive}) => `menu__link link-hover ${isActive ? "menu__link_active" : ""} ${location.pathname === '/' ? "menu__link_color_white" : "menu__link_color_black"}`}>Сохранённые фильмы</NavLink></li>
         </ul>
