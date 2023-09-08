@@ -6,22 +6,27 @@ import Footer from '../Footer/Footer';
 import MoviesCardList from '../Movies/MoviesCardList/MoviesCardList';
 import MoviesCard from '../Movies/MoviesCard/MoviesCard';
 import SearchForm from '../Movies/SearchForm/SearchForm';
-
-import card1 from '../../images/card-images/card1.jpg';
-import card2 from '../../images/card-images/card2.jpg';
-import card3 from '../../images/card-images/card3.jpg';
+import savedMovieList from '../../utils/savedMovieList';
 
 function SavedMovies(props) {
   return(
     <>
       <Header />
       <main className="save-movies">
-      <SearchForm />
-      <MoviesCardList>
-        <MoviesCard cardName="33 слова о дизайне" timeline="1ч 47м" link="/" alt="33 слова о дизайне" img={card1} />
-        <MoviesCard cardName="33 слова о дизайне" timeline="1ч 47м" link="/" alt="33 слова о дизайне" img={card2} />
-        <MoviesCard cardName="33 слова о дизайне" timeline="1ч 47м" link="/" alt="33 слова о дизайне" img={card3} />
-      </MoviesCardList>
+        <SearchForm />
+        <MoviesCardList>
+          {savedMovieList.map((movie) => (
+            <li key={movie._id}>
+              <MoviesCard
+              cardName={movie.cardName}
+              timeline={movie.timeline}
+              link={movie.link}
+              alt={movie.alt}
+              img={movie.img}
+              />
+          </li>
+          ))}
+        </MoviesCardList>
       </main>
       <Footer />
     </>

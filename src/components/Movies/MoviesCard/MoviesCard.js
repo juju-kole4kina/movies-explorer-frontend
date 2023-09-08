@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import './MoviesCard.css';
-// import Button from '../../Button/Button';
 
 function MoviesCard(props) {
   const location = useLocation();
@@ -14,7 +13,6 @@ function MoviesCard(props) {
   }
 
   return(
-    <li className="movie-list__item">
       <article className="movie-card" aria-label="Карточка фильма">
       <div className="movie-card__text-block">
         <div className="movie-card__info">
@@ -27,7 +25,6 @@ function MoviesCard(props) {
       <img className="movie-card__image" alt={props.alt} src={props.img} />
       </Link>
     </article>
-    </li>
   );
 }
 
