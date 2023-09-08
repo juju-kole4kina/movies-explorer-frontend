@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, animateScroll as scroll } from "react-scroll";
 
 import logoPromo from '../../../images/landing-logo.png';
-import Button from '../../Button/Button';
 
 import './Promo.css';
 

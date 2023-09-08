@@ -26,7 +26,7 @@ function Movies(props) {
       <Header />
       <SearchForm />
       <MoviesCardList>
-      <MoviesCard cardName="33 слова о дизайне" timeline="1ч 47м" link="/" alt="33 слова о дизайне" img={card1} />
+        <MoviesCard cardName="33 слова о дизайне" timeline="1ч 47м" link="/" alt="33 слова о дизайне" img={card1} />
         <MoviesCard cardName="33 слова о дизайне" timeline="1ч 47м" link="/" alt="33 слова о дизайне" img={card2} />
         <MoviesCard cardName="33 слова о дизайне" timeline="1ч 47м" link="/" alt="33 слова о дизайне" img={card3} />
         <MoviesCard cardName="33 слова о дизайне" timeline="1ч 47м" link="/" alt="33 слова о дизайне" img={card4} />

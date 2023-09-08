@@ -22,7 +22,6 @@ function MoviesCard(props) {
           <p className="movie-card__movie-timeline">{props.timeline}</p>
         </div>
         <button type="button" onClick={toggleSaveButton} className={`button button_type_save-card ${isSave ? "button_type_save-card-active" : ""} ${location.pathname === '/saved-movies' ? "button_type_delete-card" : ""} button-hover`}></button>
-        {/* <Button type="button" onClick={toggleSaveButton} className={`button_type_save-card ${isSave ? "button_type_save-card-active" : ""} ${location.pathname === '/saved-movies' ? "button_type_delete-card" : ""}`} /> */}
       </div>
       <Link to={props.link} className="movie-card__link" target="_blank">
       <img className="movie-card__image" alt={props.alt} src={props.img} />
