@@ -18,3 +18,22 @@
   margin: 0;
   padding: 0;
 }
+
+@media (max-width: 950px) {
+  .movie-list {
+    justify-content: center;
+    grid-template-columns: repeat(2, calc((100% - 60px) / 2));
+    gap: 36px 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .movie-list-section {
+    padding-bottom: 97px;
+  }
+
+  .movie-list {
+    grid-template-columns: repeat(2, calc((100% - 30px) / 2));
+    gap: 36px 30px;
+  }
+}

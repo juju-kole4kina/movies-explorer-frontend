@@ -45,12 +45,19 @@
   color: rgba(160, 160, 160, 1);
 }
 
+@media (max-width: 768px) {
+  .seach-form {
+    padding-top: 87px;
+    padding-bottom: 130px;
+    gap: 30px;
+  }
+}
+
 @media (max-width: 320px) {
   .seach-form {
     padding-top: 98px;
     padding-bottom: 50px;
     gap: 42px;
-
   }
 
   .seach-form__icon {

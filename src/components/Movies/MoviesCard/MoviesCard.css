@@ -47,7 +47,9 @@
   color: rgba(160, 160, 160, 1);
 }
 
-.movie-card__image {}
+.movie-card__image {
+  width: 100%;
+}
 
 /* ============= */
 
