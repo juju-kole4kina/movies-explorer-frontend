@@ -37,3 +37,21 @@
     gap: 36px 30px;
   }
 }
+
+@media (max-width: 520px) {
+  .movie-list-section {
+    padding-bottom: 80px;
+  }
+
+  .movie-list {
+    grid-template-columns: 300px;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 320px) {
+  .movie-list-section {
+    padding-bottom: 97px;
+  }
+
+}

@@ -67,3 +67,10 @@
 .filter-checkbox__input:hover + .filter-checkbox__switch {
   cursor: pointer;
 }
+
+@media (max-width: 320px) {
+  .filter-checkbox__title {
+    font-size: 11px;
+    line-height: 1.63;
+  }
+}
