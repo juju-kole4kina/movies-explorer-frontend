@@ -8,7 +8,7 @@
 
 .form__input_type_profile {}
 
-.input__label {
+.input-label {
   display: block;
   width: 100%;
   margin-bottom: 10px;
@@ -18,7 +18,7 @@
   color: rgba(160, 160, 160, 1);
 }
 
-.input__label_type_register {}
+.input-label_type_register {}
 
 .input__label_type_login {}
 
@@ -60,7 +60,7 @@
 .input_type_profile {}
 
 
-.input__input-error {
+.input-error {
   display: block;
   margin-bottom: 5px;
   height: 10px;
@@ -97,7 +97,7 @@
   background-color: rgba(255, 255, 255, 1);
 }
 
-.input__label_type_profile {
+.input-label_type_profile {
   margin: 0;
   font-weight: 500;
   font-size: 11px;
@@ -105,7 +105,7 @@
   color: rgba(0, 0, 0, 1);
 }
 
-.input__input-error_type_profile {
+.input-error_type_profile {
   display: none;
 }
 
@@ -113,7 +113,7 @@
   .input {
     margin-bottom: 5px;
   }
-  .input__input-error {
+  .input-error {
     margin-bottom: 5px;
   }
 }
@@ -123,7 +123,7 @@
     margin-bottom: 5px;
   }
 
-  .input__input-error {
+  .input-error {
     margin-bottom: 5px;
   }
 }

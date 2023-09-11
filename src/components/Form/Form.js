@@ -13,7 +13,7 @@ function Form(props) {
   return(
     <section className="section-form">
       <Logo />
-      <form action="" className={`form form_type_${props.name}`} name={props.name} onSubmit={handleSubmit}>
+      <form action="" className={`form form-input-list form_type_${props.name}`} name={props.name} onSubmit={handleSubmit}>
         <h2 className="form__title">{props.title}</h2>
         {props.children}
         <div className="form__bottom">
