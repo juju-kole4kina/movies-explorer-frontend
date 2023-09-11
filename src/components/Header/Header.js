@@ -17,10 +17,10 @@ function Header(props) {
   const isLoggedNav = (
     <ul className={`menu__menu-list menu__menu-list_isLogged ${isMobileMenuOpen ? "menu__menu-list_isLogged_active" : ""}`}>
       <li className="menu__item menu__item_rigth-menu">
-        <ul className="menu-rigth__menu-list">
-          {location.pathname !== '/' && <li className="menu__item"><NavLink to="/" className={({isActive}) => `menu__link ${isActive ? "menu__link_active" : ""}`}>Главная</NavLink></li>}
-          <li className="menu__item"><NavLink to="/movies" className={({isActive}) => `menu__link link-hover ${isActive ? "menu__link_active" : ""} ${location.pathname === '/' ? "menu__link_color_white" : "menu__link_color_black"}`}>Фильмы</NavLink></li>
-          <li className="menu__item"><NavLink to="/saved-movies" className={({isActive}) => `menu__link link-hover ${isActive ? "menu__link_active" : ""} ${location.pathname === '/' ? "menu__link_color_white" : "menu__link_color_black"}`}>Сохранённые фильмы</NavLink></li>
+        <ul className="menu__rigth-menu-list">
+          {location.pathname !== '/' && <li className="menu__rigth-menu-list-item menu__item_main"><NavLink to="/" className={({isActive}) => `menu__link ${isActive ? "menu__link_active" : ""}`}>Главная</NavLink></li>}
+          <li className="menu__rigth-menu-list-item"><NavLink to="/movies" className={({isActive}) => `menu__link link-hover ${isActive ? "menu__link_active" : ""} ${location.pathname === '/' ? "menu__link_color_white" : "menu__link_color_black"}`}>Фильмы</NavLink></li>
+          <li className="menu__rigth-menu-list-item"><NavLink to="/saved-movies" className={({isActive}) => `menu__link link-hover ${isActive ? "menu__link_active" : ""} ${location.pathname === '/' ? "menu__link_color_white" : "menu__link_color_black"}`}>Сохранённые фильмы</NavLink></li>
         </ul>
       </li>
       <li className="menu__item menu__item_profile link-hover"><NavLink to="/profile" className={({isActive}) => `menu__link ${isActive ? "menu__link_active" : ""} ${location.pathname === '/' ? "menu__link_color_white" : "menu__link_color_black"}`}>Аккаунт</NavLink></li>

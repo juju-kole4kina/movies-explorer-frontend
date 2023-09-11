@@ -2,16 +2,16 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-bottom: 75px;
+  padding-bottom: 80px;
 }
 
 .movie-list {
   display: grid;
   grid-template-columns: repeat(3, calc((100% - 44px) / 3));
   list-style: none;
-  margin: 0 0 77px;
+  margin: 0 0 80px;
   padding: 0;
-  gap: 28px 24px;
+  gap: 31px 22px;
 }
 
 .movie-list__item {
