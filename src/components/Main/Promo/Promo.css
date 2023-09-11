@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   padding-top: 75px;
-  padding-bottom: 75px;
+  padding-bottom: 73px;
   color: rgba(255, 255, 255, 1);
   background-color: rgba(70, 93, 255, 1);
 }
@@ -64,7 +64,7 @@
     flex-direction: column-reverse;
     align-items: center;
     padding-top: 140px;
-    padding-bottom: 77px;
+    padding-bottom: 75px;
   }
 
   .promo__content {
@@ -83,8 +83,13 @@
     max-width: 250px;
     text-align: center;
   }
+
   .promo__logo {
     margin-bottom: 48px;
+  }
+
+  .promo__learn-more-button {
+    margin-top: 90px;
   }
 }
 
@@ -108,5 +113,9 @@
 
   .promo__logo {
     margin-bottom: 45px;
+  }
+
+  .promo__learn-more-button {
+    margin-top: 78px;
   }
 }
