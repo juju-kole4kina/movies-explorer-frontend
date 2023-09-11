@@ -15,7 +15,7 @@
   max-width: 635px;
 }
 
-.propmo__title {
+.promo__content-title {
   margin: 0 0 37px;
   padding: 0;
   font-weight: 400;
@@ -23,7 +23,7 @@
   line-height: 1.16;
 }
 
-.promo__subtitle {
+.promo__content-subtitle {
   margin: 0;
   padding: 0;
   max-width: 310px;
@@ -32,7 +32,7 @@
   opacity: 0.5;
 }
 
-.promo__learn-more-button {
+.promo__content-learn-more-button {
   display: flex;
   align-items: center;
   justify-content: center;
