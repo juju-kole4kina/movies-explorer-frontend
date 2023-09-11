@@ -89,7 +89,7 @@
   transition: opacity 0.3s ease;
 }
 
-.menu__item_main {
+.menu__rigth-menu-list-item_main {
   display: none;
 }
 
@@ -248,7 +248,7 @@
     padding-bottom: 8px;
   }
 
-  .menu__item_main {
+  .menu__rigth-menu-list-item_main {
     display: block;
   }
 }
