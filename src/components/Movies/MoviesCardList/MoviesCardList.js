@@ -1,11 +1,12 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import movieList from '../../../utils/movieList';
 import NoResult from '../NoResult/NoResult';
 import Button from '../../Button/Button';
 import './MoviesCardList.css';
 
 function MoviesCardList(props) {
-
+  const location = useLocation();
 
   function handleShowMore() {}
   return(
@@ -15,7 +16,7 @@ function MoviesCardList(props) {
         {props.children}
       </ul>) :
       (<NoResult />)}
-        <Button type="button" className="button_type_more" onClick={handleShowMore} buttonText="Ещё" />
+      <Button type="button" className={`button_type_more ${location.pathname === '/saved-movies' ? "button_type_more-disabled" : ""}`} onClick={handleShowMore} buttonText="Ещё" />
     </section>
   );
 }
