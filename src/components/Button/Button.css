@@ -58,8 +58,9 @@
 
 .button_type_save-card {
   border-radius: 50%;
-  width: 38px;
-  height: 38px;
+  width: 30px;
+  height: 30px;
+  box-sizing: border-box;
   background-image: url('../../images/icons/icon-favorites-unactive.svg');
   background-position: center;
   background-repeat: no-repeat;
@@ -132,10 +133,19 @@
   .button_type_learn-more {
     margin-top: 90px;
   }
+
+  .button_type_go-back{
+    margin-bottom: 222px;
+  }
 }
 
 @media (max-width: 320px) {
   .button_type_learn-more {
     margin-top: 80px;
+  }
+
+  .button_type_go-back {
+    margin: auto 0 30px;
+    font-size: 12px;
   }
 }

@@ -32,17 +32,6 @@
   text-align: center;
 }
 
-.button_type_to-main {
-  margin: auto 0 60px;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: normal;
-  text-align: center;
-  text-decoration: none;
-  color: rgba(255, 104, 56, 1);
-  transition: opacity 0.3s ease;
-}
-
 @media (max-width: 768px) {
   .not-found-page {
     height: 1024px;
@@ -51,13 +40,9 @@
   .not-found-page__title {
     margin: 408px 0 0;
   }
-
-  .button_type_to-main {
-    margin-bottom: 222px;
-  }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 320px) {
   .not-found-page {
     height: 780px;
   }
@@ -74,11 +59,6 @@
 
   .not-found-page__err-message {
     margin: 0;
-    font-size: 12px;
-  }
-
-  .button_type_to-main {
-    margin: auto 0 30px;
     font-size: 12px;
   }
 }

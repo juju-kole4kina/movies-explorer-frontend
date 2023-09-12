@@ -53,38 +53,6 @@
   height: 100%;
 }
 
-/* ============= */
-
-.button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  padding: 0;
-  transition: opacity 0.3s ease;
-  cursor: pointer;
-}
-
-.button_type_save-card {
-  box-sizing: border-box;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  background-image: url('../../../images/icons/icon-favorites-unactive.svg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: rgba(249, 249, 249, 1);
-}
-
-.button_type_save-card-active {
-  background-image: url('../../../images/icons/icon-favorites-min.svg');
-  background-color: rgba(43, 224, 128, 1);
-}
-
-.button_type_delete-card {
-  background-image: url('../../../images/icons/icon-delete-card.svg');
-}
-
 @media (max-width: 320px) {
   .movie-list__item {
     height: 236px;
