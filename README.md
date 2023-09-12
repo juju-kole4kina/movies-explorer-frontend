@@ -25,4 +25,4 @@
 
 ## Ссылки на проект
 
-[Ссылка на макет](https://disk.yandex.ru/d/Jy9Ul746Uy6Jpw);
+[Ссылка на макет](https://disk.yandex.ru/d/Jy9Ul746Uy6Jpw) (light-5)
