@@ -61,7 +61,7 @@
   width: 30px;
   height: 30px;
   box-sizing: border-box;
-  background-image: url('../../images/icons/icon-favorites-unactive.svg');
+  background-image: url('../../images/icons/icon-favorites-unactive-min.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-color: rgba(249, 249, 249, 1);
@@ -73,7 +73,7 @@
 }
 
 .button_type_delete-card {
-  background-image: url('../../images/icons/icon-delete-card.svg');
+  background-image: url('../../images/icons/icon-delete-min.svg');
 }
 
 .button_type_edit-profile {
@@ -134,7 +134,7 @@
     margin-top: 90px;
   }
 
-  .button_type_go-back{
+  .button_type_go-back {
     margin-bottom: 222px;
   }
 }

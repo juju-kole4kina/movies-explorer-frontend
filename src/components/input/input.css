@@ -2,27 +2,15 @@
   width: 100%;
 }
 
-.form__input_type_register {}
-
-.form__input_type_login {}
-
-.form__input_type_profile {}
-
 .input-label {
   display: block;
-  width: 100%;
   margin-bottom: 10px;
+  width: 100%;
   font-weight: 400;
   font-size: 10px;
   line-height: normal;
   color: rgba(160, 160, 160, 1);
 }
-
-.input-label_type_register {}
-
-.input__label_type_login {}
-
-.input__label_type_profile {}
 
 .input {
   margin-bottom: 5px;
@@ -39,7 +27,7 @@
 }
 
 .input:focus {
-  outline: 1px solid rgba(255, 104, 56, 1);
+  outline: none;
 }
 
 .input::placeholder {
@@ -53,13 +41,6 @@
   color: rgba(238, 52, 101, 1);
 }
 
-.input_type_register {}
-
-.input_type_login {}
-
-.input_type_profile {}
-
-
 .input-error {
   display: block;
   margin-bottom: 5px;
@@ -69,10 +50,6 @@
   line-height: normal;
   color: rgba(238, 52, 101, 1);
 }
-
-.input__input-error_type_register {}
-
-.input__input-error_type_login {}
 
 .form__input_type_profile {
   display: flex;
@@ -85,7 +62,6 @@
 }
 
 .input_type_profile {
-  text-align: right;
   margin: 0;
   border: none;
   border-bottom: rgba(232, 232, 232, 1);
@@ -93,6 +69,7 @@
   font-weight: 500;
   font-size: 11px;
   line-height: 1;
+  text-align: right;
   color: rgba(0, 0, 0, 1);
   background-color: rgba(255, 255, 255, 1);
 }
@@ -113,6 +90,7 @@
   .input {
     margin-bottom: 5px;
   }
+
   .input-error {
     margin-bottom: 5px;
   }

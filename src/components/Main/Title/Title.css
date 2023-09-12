@@ -14,12 +14,6 @@
   margin: 0 0 67px;
 }
 
-/* @media (max-width: 768px) {
-  .section-title {
-    margin: 0 0 75px;
-  }
-} */
-
 @media (max-width: 468px) {
   .section-title {
     margin-bottom: 60px;

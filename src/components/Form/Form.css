@@ -8,12 +8,6 @@
   height: 485px;
 }
 
-.form_type_register {}
-
-.form_type_login {}
-
-.form_type_profile {}
-
 .form__title {
   margin-top: 0;
   margin-bottom: 41px;
@@ -23,7 +17,6 @@
 }
 
 .form__bottom {
-  /* margin: 75px 0 0; */
   margin: auto 0 0;
 }
 
@@ -44,12 +37,6 @@
   text-decoration: none;
   color: rgba(255, 104, 56, 1);
 }
-
-.form__footer_type_register {}
-
-.form__footer_type_login {}
-
-.form__footer_type_profile {}
 
 @media (max-width: 768px) {
   .form {

@@ -618,7 +618,6 @@
         "checkPrefixed": true
       }
     ],
-    "property-no-vendor-prefix": true,
     "rule-empty-line-before": [
       "always-multi-line",
       {

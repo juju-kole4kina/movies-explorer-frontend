@@ -115,7 +115,6 @@
 
   .about-project__description {
     margin-bottom: 60px;
-
   }
 
   .project-description__column {
@@ -133,16 +132,13 @@
   }
 
   .timeline-table__item_stek {
+    padding: 10px;
     font-weight: 400;
+    line-height: 1;
   }
 
   .timeline-table__item {
     font-size: 11px;
-  }
-
-  .timeline-table__item_stek {
-    padding: 10px;
-    line-height: 1;
   }
 }
 
@@ -159,5 +155,4 @@
     margin: 0;
     row-gap: 15px;
   }
-
 }

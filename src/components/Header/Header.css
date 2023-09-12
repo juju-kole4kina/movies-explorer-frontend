@@ -68,7 +68,7 @@
 }
 
 .menu__menu-list_isLogged .menu__item_profile::after {
-  content: url('../../images/icons/icon-akk.svg');
+  content: url('../../images/icons/icon-akk-min.svg');
   display: flex;
   align-items: center;
   justify-content: center;
@@ -220,10 +220,6 @@
   .menu__menu-list_isLogged .menu__link {
     font-size: 18px;
     color: rgba(0, 0, 0, 1);
-  }
-
-  .menu__menu-list_isNotLogged {
-
   }
 
   .menu_isLogged {
