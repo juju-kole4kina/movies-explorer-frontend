@@ -5,6 +5,8 @@ import Button from '../../Button/Button';
 import './MoviesCardList.css';
 
 function MoviesCardList(props) {
+
+
   function handleShowMore() {}
   return(
     <section className="movie-list-section section-container" aria-label="Список фиьмов">

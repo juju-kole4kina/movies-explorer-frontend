@@ -51,13 +51,13 @@
   color: rgba(238, 52, 101, 1);
 }
 
-.form__input_type_profile {
+.profile-input-list__input {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.form__input_type_profile:not(:last-of-type) {
+.profile-input-list__input:not(:last-of-type) {
   border-bottom: 1px solid rgba(232, 232, 232, 1);
 }
 
