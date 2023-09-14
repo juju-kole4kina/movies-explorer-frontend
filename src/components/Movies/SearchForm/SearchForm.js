@@ -12,13 +12,16 @@ function SearchForm(props) {
     setSearchText(e.target.value);
   }
   return(
-    <section className="seach-form section-container" aria-label="Форма поиска">
-      <form className="seach-form__input-container">
-        <div className="seach-form__icon"></div>
-        <input type="text" value={isSearchText} onChange={handleChangeSearchText} className="seach-form__input" placeholder="Фильм" />
-        <Button type="submit" className="button_type_search" buttonText={<img className="button__icon" src={arrow} alt="Кнопка поиска" />} />
+    <section className="seach-form-section section-container" aria-label="Форма поиска">
+      <form className="seach-form-section__form">
+        <div className="seach-form-section__input-container">
+          <div className="seach-form-section__icon"></div>
+          <input type="text" value={isSearchText} onChange={handleChangeSearchText} className="seach-form-section__input" placeholder="Фильм" />
+          <Button type="submit" className="button_type_search" buttonText={<img className="button__icon" src={arrow} alt="Кнопка поиска" />} />
+        </div>
+        <FilterCheckbox />
       </form>
-      <FilterCheckbox />
+
     </section>
   );
 }
