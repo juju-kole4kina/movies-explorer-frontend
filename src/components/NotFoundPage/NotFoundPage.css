@@ -6,6 +6,14 @@
   height: 700px;
 }
 
+.not-found-page__section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 700px;
+}
+
 .not-found-page__title {
   display: flex;
   flex-direction: column;
