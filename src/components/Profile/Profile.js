@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import './Profile.css';
 import Header from '../Header/Header';
 import Input from '../Input/Input';
 
 function Profile(props) {
+const navigate = useNavigate();
+
 const [isEditProfile, setEditProfile] = useState(false);
 const [isName, setName] = useState('');
 const [isEmail, setEmail] = useState('');
 
 function handleEditProfileClick() {
   setEditProfile(true);
+}
+
+function handleSignOut() {
+  navigate('/');
 }
 
 function handleNameChange(e) {
@@ -39,7 +46,7 @@ function handleEmailChange(e) {
         </ul>
         <div className="profile__buttons">
             <button type="button" className="profile__button link-hover" onClick={handleEditProfileClick}>Редактировать</button>
-            <button type="button" className="profile__button profile__button_type_exit link-hover">Выйти из аккаунта</button>
+            <button type="button" className="profile__button profile__button_type_exit link-hover" onClick={handleSignOut}>Выйти из аккаунта</button>
           </div>
       </div>
       <div className={`profile__form-container ${isEditProfile ? "profile__form-container_active" : ""}`}>
