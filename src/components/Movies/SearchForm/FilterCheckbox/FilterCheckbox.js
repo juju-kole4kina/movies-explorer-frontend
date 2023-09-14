@@ -12,7 +12,7 @@ function FilterCheckbox(props) {
     <div className="filter-checkbox">
       <label className="filter-checkbox__container">
         <input type="checkbox" value={isFilter} onChange={handleChangeFilter} className="filter-checkbox__input" />
-        <span className="filter-checkbox__switch"></span>
+        <span className="filter-checkbox__switch button-hover"></span>
     </label>
     <p className="filter-checkbox__title">Короткометражки</p>
     </div>
