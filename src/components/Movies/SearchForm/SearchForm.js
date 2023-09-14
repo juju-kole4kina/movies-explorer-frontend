@@ -16,7 +16,7 @@ function SearchForm(props) {
       <form className="seach-form-section__form">
         <div className="seach-form-section__input-container">
           <div className="seach-form-section__icon"></div>
-          <input type="text" value={isSearchText} onChange={handleChangeSearchText} className="seach-form-section__input" placeholder="Фильм" />
+          <input type="text" value={isSearchText} onChange={handleChangeSearchText} className="seach-form-section__input" placeholder="Фильм" required />
           <Button type="submit" className="button_type_search" buttonText={<img className="button__icon" src={arrow} alt="Кнопка поиска" />} />
         </div>
         <FilterCheckbox />
