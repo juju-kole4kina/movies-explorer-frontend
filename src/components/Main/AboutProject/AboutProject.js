@@ -10,11 +10,11 @@ function AboutProject(props) {
       <Title title="О проекте" />
       <div className="about-project__description project-description">
         <div className="project-description__column">
-          <h2 className="project-description__title">Дипломный проект включал 5 этапов</h2>
+          <h3 className="project-description__title">Дипломный проект включал 5 этапов</h3>
           <p className="project-description__text">Составление плана, работу над бэкендом, вёрстку, добавление функциональности и финальные доработки.</p>
         </div>
         <div className="project-description__column">
-        <h2 className="project-description__title">На выполнение диплома ушло 5 недель</h2>
+        <h3 className="project-description__title">На выполнение диплома ушло 5 недель</h3>
           <p className="project-description__text">У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься.</p>
         </div>
       </div>
