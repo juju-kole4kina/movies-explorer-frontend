@@ -16,7 +16,7 @@ function PageNotFound() {
       <section className="not-found-page__section">
         <h1 className="not-found-page__title">
           <span className="not-found-page__err-code">404</span>
-          <p className="not-found-page__err-message">Страница не найдена</p>
+          <span className="not-found-page__err-message">Страница не найдена</span>
         </h1>
         <Button type="button" onClick={handleGoBack} className="button_type_go-back" buttonText="Назад" />
       </section>
