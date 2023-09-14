@@ -53,6 +53,12 @@
   height: 100%;
 }
 
+@media (max-width: 768px) {
+  .movie-card__text-block {
+    padding-top: 14px;
+  }
+}
+
 @media (max-width: 320px) {
   .movie-list__item {
     height: 236px;
