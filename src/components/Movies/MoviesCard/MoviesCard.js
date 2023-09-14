@@ -17,7 +17,7 @@ function MoviesCard(props) {
       <article className="movie-card" aria-label="Карточка фильма">
       <div className="movie-card__text-block">
         <div className="movie-card__info">
-          <h3 className="movie-card__title">{props.cardName}</h3>
+          <h2 className="movie-card__title">{props.cardName}</h2>
           <p className="movie-card__movie-timeline">{props.timeline}</p>
         </div>
         <Button type="button" onClick={toggleSaveButton} className={`button_type_save-card ${isSave ? "button_type_save-card-active" : ""} ${location.pathname === '/saved-movies' ? "button_type_delete-card" : ""}`} />
