@@ -19,14 +19,16 @@ function AboutProject(props) {
         </article>
       </div>
       <table className="about-project__timeline-table timeline-table">
-        <tr className="timeline-table__table-row timeline-table__table-row_time">
-          <td className="timeline-table__item timeline-table__item_first-time">1 неделя</td>
-          <td className="timeline-table__item">4 недели</td>
-        </tr>
-        <tr className="timeline-table__table-row timeline-table__table-row_stek">
-        <td className="timeline-table__item timeline-table__item_stek">Back-end</td>
-        <td className="timeline-table__item timeline-table__item_stek">Front-end</td>
-        </tr>
+        <tbody>
+          <tr className="timeline-table__table-row timeline-table__table-row_time">
+            <td className="timeline-table__item timeline-table__item_first-time">1 неделя</td>
+            <td className="timeline-table__item">4 недели</td>
+          </tr>
+          <tr className="timeline-table__table-row timeline-table__table-row_stek">
+            <td className="timeline-table__item timeline-table__item_stek">Back-end</td>
+            <td className="timeline-table__item timeline-table__item_stek">Front-end</td>
+          </tr>
+        </tbody>
       </table>
     </section>
   )
