@@ -17,7 +17,7 @@ function Register(props) {
       >
         <Input formName="form" name="name" id="reg-name" label="Имя" type="text" placeholder="Ваше имя" min="2" max="30" />
         <Input formName="form" name="email" id="reg-email" label="E-mail" type="email" placeholder="example@example.com" />
-        <Input formName="form" name="password" id="reg-password" label="Пароль" type="password" placeholder="Введите пароль" />
+        <Input formName="form" name="password" id="reg-password" label="Пароль" type="password" placeholder="Введите пароль" min="8" max="30" />
       </Form>
     </main>
   );
