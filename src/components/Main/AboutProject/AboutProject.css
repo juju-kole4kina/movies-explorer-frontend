@@ -86,7 +86,7 @@
     row-gap: 27px;
   }
 
-  .description__text {
+  .project-description__text {
     font-size: 12px;
     line-height: 1.5;
   }
@@ -122,7 +122,7 @@
     row-gap: 16px;
   }
 
-  .description__text {
+  .project-description__text {
     font-size: 12px;
     line-height: 1.5;
   }
