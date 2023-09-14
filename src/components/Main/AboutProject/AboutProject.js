@@ -9,14 +9,14 @@ function AboutProject(props) {
     <section className="about-project section-container" id="about-project" aria-label="О проекте">
       <Title title="О проекте" />
       <div className="about-project__description project-description">
-        <article className="project-description__column">
+        <div className="project-description__column">
           <h2 className="project-description__title">Дипломный проект включал 5 этапов</h2>
           <p className="project-description__text">Составление плана, работу над бэкендом, вёрстку, добавление функциональности и финальные доработки.</p>
-        </article>
-        <article className="project-description__column">
+        </div>
+        <div className="project-description__column">
         <h2 className="project-description__title">На выполнение диплома ушло 5 недель</h2>
           <p className="project-description__text">У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься.</p>
-        </article>
+        </div>
       </div>
       <table className="about-project__timeline-table timeline-table">
         <tbody>
