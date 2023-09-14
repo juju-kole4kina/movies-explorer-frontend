@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-scroll";
 
-import logoPromo from '../../../images/landing-logo.png';
+import logoPromo from '../../../images/landing-logo-min.svg';
 
 import './Promo.css';
 
