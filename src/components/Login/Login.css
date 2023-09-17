@@ -1,0 +1,19 @@
+.login-page {
+  margin: 0 auto;
+  padding-top: 70px;
+  height: 700px;
+}
+
+@media (max-width: 768px) {
+  .login-page {
+    padding-top: 232px;
+    height: 1024px;
+  }
+}
+
+@media (max-width: 460px) {
+  .login-page {
+    padding-top: 26px;
+    height: 780px;
+  }
+}

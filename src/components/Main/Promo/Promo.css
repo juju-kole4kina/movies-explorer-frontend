@@ -1,0 +1,121 @@
+.promo {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 75px;
+  padding-bottom: 73px;
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(70, 93, 255, 1);
+}
+
+.promo__content {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-right: 10px;
+  max-width: 635px;
+}
+
+.promo__content-title {
+  margin: 0 0 37px;
+  padding: 0;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 1.16;
+}
+
+.promo__content-subtitle {
+  margin: 0;
+  padding: 0;
+  max-width: 310px;
+  font-size: 13px;
+  line-height: 1.2;
+  opacity: 0.5;
+}
+
+.promo__content-learn-more-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 146px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 3px;
+  padding: 0;
+  width: 129px;
+  height: 36px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 1);
+  background-color: transparent;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.promo__logo {
+  margin: 0;
+  padding: 0;
+  max-width: 310px;
+  max-height: 304px;
+}
+
+@media (max-width: 768px) {
+  .promo {
+    flex-direction: column-reverse;
+    align-items: center;
+    padding-top: 140px;
+    padding-bottom: 75px;
+  }
+
+  .promo__content {
+    align-items: center;
+    margin: 0;
+  }
+
+  .promo__content-title {
+    margin: 0 0 24px;
+    font-size: 40px;
+    line-height: 1.25;
+    text-align: center;
+  }
+
+  .promo__content-subtitle {
+    max-width: 250px;
+    text-align: center;
+  }
+
+  .promo__logo {
+    margin-bottom: 48px;
+  }
+
+  .promo__content-learn-more-button {
+    margin-top: 90px;
+  }
+}
+
+@media (max-width: 468px) {
+  .promo__content-title {
+    font-size: 30px;
+    letter-spacing: -1.2px;
+  }
+
+  .promo__logo {
+    width: 210px;
+    height: 206px;
+  }
+}
+
+@media (max-width: 320px) {
+  .promo {
+    padding-top: 70px;
+    padding-bottom: 31px;
+  }
+
+  .promo__logo {
+    margin-bottom: 45px;
+  }
+
+  .promo__content-learn-more-button {
+    margin-top: 78px;
+  }
+}

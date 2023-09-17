@@ -1,0 +1,14 @@
+.no-result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.no-result__message {
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 1;
+  color: rgba(160, 160, 160, 1);
+}
