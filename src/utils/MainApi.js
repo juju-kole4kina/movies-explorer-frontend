@@ -65,7 +65,7 @@ export default class MainApi {
   }
 }
 
-export const moviesApi = new MainApi({
+export const mainApi = new MainApi({
   url: 'https://api.movie-exp.kole4kina.nomoredomainsicu.ru',
   headers: {'Content-Type': 'application/json'}
 });
