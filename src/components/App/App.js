@@ -14,6 +14,7 @@ import PageNotFound from '../NotFoundPage/NotFoundPage';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import { mainApi } from '../../utils/MainApi';
+import { moviesApi } from '../../utils/MoviesApi';
 import { auth } from '../../utils/auth';
 
 import { CurrentUserContext } from '../../context/CurrentUserCotext';
@@ -25,10 +26,20 @@ const navigate = useLocation();
 const [currentUser, setCurrenrUser] = useState({});
 const [isLoggedIn, setIsLoggedIn] = useState(false);
 const [email, setEmail] = useState('');
+const [movies, setMovies] = useState([]);
 
 useEffect(() => {
   checkToken();
 }, [isLoggedIn]);
+
+useEffect(() => {
+  moviesApi.getMovies()
+  .then((movies) => {
+    localStorage.setItem('movies', JSON.stringify(movies));
+    setMovies(movies);
+  })
+  .catch((err) => console.log(err));
+}, [])
 
 function handleRegister({ name, email, password }) {
   auth.createUser(name, email, password)

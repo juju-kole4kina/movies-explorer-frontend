@@ -1,4 +1,5 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import './Movies.css';
 import Header from '../Header/Header';
@@ -6,23 +7,57 @@ import Footer from '../Footer/Footer';
 import SearchForm from './SearchForm/SearchForm';
 import MoviesCardList from './MoviesCardList/MoviesCardList';
 import MoviesCard from './MoviesCard/MoviesCard';
-import movieList from '../../utils/movieList';
+// import movieList from '../../utils/movieList';
 
 function Movies(props) {
+  const [isLoading, setIsLoading] = useState(false);
+  const [getMovieList, setGetMoviList] = useState([]);
+  const [errorMessage, setErrorMessasge] = useState('');
+  const [inputValue, setInputValue] = useState('');
+  const [filterChecked, setFilterChecked] = useState(false);
+
+  function handleFilter(e) {
+    setFilterChecked(e.target.checked);
+  }
+
+  function handleSearch(e) {
+    e.preventDefault();
+    let movieList = JSON.parse(localStorage.getItem('movies'));
+    let searchMovieList = movieList.filter((movie) => {
+      return (movie.nameRU.toLowerCase() === inputValue.toLowerCase()) ||
+      (movie.nameEN.toLowerCase() === inputValue.toLowerCase()) ||
+      (movie.country.toLowerCase() === inputValue.toLowerCase()) ||
+      (movie.director.toLowerCase() === inputValue.toLowerCase()) ||
+      (movie.year === inputValue) || setErrorMessasge('Ничего не найдено');
+    });
+    setGetMoviList(searchMovieList);
+    if (filterChecked === true) {
+      let filterSearchMovieList = searchMovieList.filter((movie) => {
+        return movie.duration <= 40;
+      });
+      setGetMoviList(filterSearchMovieList);
+    }
+  }
+
   return(
     <>
       <Header />
       <main className="movies">
         <SearchForm />
-        <MoviesCardList>
-        {movieList.map((movie) => (
-        <li key={movie._id}>
+        <MoviesCardList
+        checked={filterChecked}
+        handleFilter={handleFilter}
+        onSubmit={handleSearch}>
+        {getMovieList.map((movie) => (
+        <li key={movie.id}>
           <MoviesCard
-          cardName={movie.cardName}
-          timeline={movie.timeline}
-          link={movie.link}
-          alt={movie.alt}
-          img={movie.img}
+          cardName={movie.nameRU}
+          timeline={movie.duration}
+          link={movie.trailerLink}
+          alt={movie.image.name}
+          img={movie.image.url}
+          imgMiddle={movie.image.formats.thumbnail.url}
+          imgSmall={movie?.image?.formats?.small?.url}
           />
         </li>
         ))}

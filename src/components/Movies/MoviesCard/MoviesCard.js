@@ -23,7 +23,7 @@ function MoviesCard(props) {
         <Button type="button" onClick={toggleSaveButton} className={`button_type_save-card ${isSave ? "button_type_save-card-active" : ""} ${location.pathname === '/saved-movies' ? "button_type_delete-card" : ""}`} />
       </div>
       <Link to={props.link} className="movie-card__link" target="_blank">
-      <img className="movie-card__image" alt={props.alt} src={props.img} />
+      <img className="movie-card__image" alt={props.alt} src={`https://api.nomoreparties.co/${props.img}`} srcSet={`https://api.nomoreparties.co/${props.imgMiddle} 768w, https://api.nomoreparties.co/${props.imgSmall} 320w`} />
       </Link>
     </article>
   );
