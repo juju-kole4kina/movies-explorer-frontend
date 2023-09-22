@@ -11,6 +11,8 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import PageNotFound from '../NotFoundPage/NotFoundPage';
 
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+
 import { mainApi } from '../../utils/MainApi';
 import { auth } from '../../utils/auth';
 
@@ -71,9 +73,28 @@ function handleSignout() {
           <Route path='/' element={<Main />} />
           <Route path='/signup' element={<Register isRegister={handleRegister} />} />
           <Route path='/signin' element={<Login />} isLogin={handleLogin} />
-          <Route path='/movies' element={<Movies />} />
-          <Route path='/saved-movies' element={<SavedMovies />} />
-          <Route path='/profile' element={<Profile isSignout={handleSignout} />} />
+          <Route path='/movies' element={
+            <ProtectedRoute
+              idLoggedIn={isLoggedIn}
+              element={<Movies
+              idLoggedIn={isLoggedIn} />
+            } />
+          } />
+          <Route path='/saved-movies' element={
+            <ProtectedRoute
+              idLoggedIn={isLoggedIn}
+              element={<SavedMovies
+              idLoggedIn={isLoggedIn} />
+            } />
+          } />
+          <Route path='/profile' element={
+            <ProtectedRoute
+            idLoggedIn={isLoggedIn}
+            element={<Profile
+              idLoggedIn={isLoggedIn}
+              isSignout={handleSignout} />
+            } />
+          } />
           <Route path='*' element={<PageNotFound />} />
         </Routes>
       </div>
