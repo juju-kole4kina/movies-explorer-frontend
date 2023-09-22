@@ -1,6 +1,6 @@
 import '../../index.css';
 import './App.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
 import Main from '../Main/Main';
@@ -22,6 +22,11 @@ const navigate = useLocation();
 
 const [currentUser, setCurrenrUser] = useState({});
 const [isLoggedIn, setIsLoggedIn] = useState(false);
+const [email, setEmail] = useState('');
+
+useEffect(() => {
+  checkToken();
+}, [isLoggedIn]);
 
 function handleRegister({ name, email, password }) {
   auth.createUser(name, email, password)
@@ -40,6 +45,25 @@ function handleLogin({ email, password }) {
   .catch((err) => console.log(err));
 }
 
+function checkToken() {
+  auth.getCurrentUser()
+  .then((res) => {
+    setIsLoggedIn(true);
+    setCurrenrUser(res);
+    setEmail(res.email);
+    navigate('/', { replace: true });
+  })
+}
+
+function handleSignout() {
+  auth.loggout()
+  .then(() => {
+    setIsLoggedIn(false);
+    navigate('/signin', { replace: true });
+  })
+  .catch((err) => console.lof(err));
+}
+
   return(
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -49,7 +73,7 @@ function handleLogin({ email, password }) {
           <Route path='/signin' element={<Login />} isLogin={handleLogin} />
           <Route path='/movies' element={<Movies />} />
           <Route path='/saved-movies' element={<SavedMovies />} />
-          <Route path='/profile' element={<Profile />} />
+          <Route path='/profile' element={<Profile isSignout={handleSignout} />} />
           <Route path='*' element={<PageNotFound />} />
         </Routes>
       </div>
