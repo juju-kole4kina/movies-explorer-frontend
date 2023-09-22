@@ -37,6 +37,12 @@ function Movies(props) {
       });
       setGetMoviList(filterSearchMovieList);
     }
+
+    if (inputValue === '') {
+      setErrorMessasge('Нужно ввести ключевое слово');
+    } else {
+      setErrorMessasge('');
+    }
   }
 
   return(
@@ -47,6 +53,7 @@ function Movies(props) {
         <MoviesCardList
         checked={filterChecked}
         handleFilter={handleFilter}
+        errorMessage={errorMessage}
         onSubmit={handleSearch}>
         {getMovieList.map((movie) => (
         <li key={movie.id}>
