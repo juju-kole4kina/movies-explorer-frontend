@@ -21,6 +21,7 @@ function App() {
 const navigate = useLocation();
 
 const [currentUser, setCurrenrUser] = useState({});
+const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 function handleRegister({ name, email, password }) {
   auth.createUser(name, email, password)
@@ -30,16 +31,25 @@ function handleRegister({ name, email, password }) {
   .catch((err) => console.log(err));
 }
 
+function handleLogin({ email, password }) {
+  auth.login(email, password)
+  .then(() => {
+    setIsLoggedIn(true);
+    navigate('/', { repalce: true });
+  })
+  .catch((err) => console.log(err));
+}
+
   return(
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <Routes>
           <Route path='/' element={<Main />} />
+          <Route path='/signup' element={<Register isRegister={handleRegister} />} />
+          <Route path='/signin' element={<Login />} isLogin={handleLogin} />
           <Route path='/movies' element={<Movies />} />
           <Route path='/saved-movies' element={<SavedMovies />} />
           <Route path='/profile' element={<Profile />} />
-          <Route path='/signup' element={<Register isRegister={handleRegister} />} />
-          <Route path='/signin' element={<Login />} />
           <Route path='*' element={<PageNotFound />} />
         </Routes>
       </div>
