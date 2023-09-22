@@ -4,7 +4,7 @@ import './Register.css';
 import Form from '../Form/Form';
 import Input from '../Input/Input';
 
-import FormValidator from '../../utils/Validator';
+import FormValidator from '../../hook/Validator';
 
 function Register(props) {
   const { values, handleChange, errors, isValid, resetForm } = FormValidator();
