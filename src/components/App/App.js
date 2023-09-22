@@ -41,6 +41,19 @@ useEffect(() => {
   .catch((err) => console.log(err));
 }, [])
 
+function changeFormatTime(duration) {
+  const minutes = duration % 60;
+  const hour = Math.floor(duration / 60);
+
+  if (hour === 0 && minutes) {
+    return `${minutes}м`;
+  } else if (minutes === 0 && hour) {
+    return `${hour}ч`;
+  } else {
+    return `${hour}ч ${minutes}м`;
+  }
+}
+
 function handleRegister({ name, email, password }) {
   auth.createUser(name, email, password)
   .then(() => {
@@ -88,14 +101,17 @@ function handleSignout() {
             <ProtectedRoute
               idLoggedIn={isLoggedIn}
               element={<Movies
-              idLoggedIn={isLoggedIn} />
+              idLoggedIn={isLoggedIn}
+              duration={changeFormatTime} />
             } />
           } />
           <Route path='/saved-movies' element={
             <ProtectedRoute
               idLoggedIn={isLoggedIn}
               element={<SavedMovies
-              idLoggedIn={isLoggedIn} />
+              movies={movies}
+              idLoggedIn={isLoggedIn}
+              duration={changeFormatTime} />
             } />
           } />
           <Route path='/profile' element={

@@ -59,7 +59,7 @@ function Movies(props) {
         <li key={movie.id}>
           <MoviesCard
           cardName={movie.nameRU}
-          timeline={movie.duration}
+          timeline={props.duration(movie.duration)}
           link={movie.trailerLink}
           alt={movie.image.name}
           img={movie.image.url}
