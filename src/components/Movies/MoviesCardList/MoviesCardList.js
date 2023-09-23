@@ -12,11 +12,13 @@ function MoviesCardList(props) {
   return(
     <section className="movie-list-section section-container" aria-label="Список фиьмов">
       {movieList.length > 0 ?
-      (<ul className="movie-list">
+      (<>
+      <ul className="movie-list">
         {props.children}
-      </ul>) :
+      </ul>
+      <Button type="button" className={`button_type_more ${(location.pathname === '/saved-movies' || props.hiddenMovies.length === 0) ? "button_type_more-disabled" : ""}`} onClick={handleShowMore} buttonText="Ещё" />
+      </>) :
       (<NoResult />)}
-      <Button type="button" className={`button_type_more ${location.pathname === '/saved-movies' ? "button_type_more-disabled" : ""}`} onClick={handleShowMore} buttonText="Ещё" />
     </section>
   );
 }

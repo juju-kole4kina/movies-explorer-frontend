@@ -28,6 +28,9 @@ const [isLoggedIn, setIsLoggedIn] = useState(false);
 const [email, setEmail] = useState('');
 const [movies, setMovies] = useState([]);
 
+const [countMovies, setCountMovies] = useState(0);
+const [countMoviesAlso, setCountMoviesAlso] = useState(0);
+
 useEffect(() => {
   checkToken();
 }, [isLoggedIn]);
@@ -39,7 +42,33 @@ useEffect(() => {
     setMovies(movies);
   })
   .catch((err) => console.log(err));
-}, [])
+}, []);
+
+useEffect(() => {
+  onResize();
+  window.addEventListener('resize', () => {
+    setTimeout(() => onResize(), 500);
+  });
+  return () => window.removeEventListener('resize', onResize);
+}, []);
+
+function onResize() {
+  const width = window.innerWidth;
+
+  if (width <= 520) {
+    setCountMovies(5);
+    setCountMoviesAlso(2);
+  } else if (width <= 950) {
+    setCountMovies(8);
+    setCountMoviesAlso(2);
+  } else if (width <= 1280) {
+    setCountMovies(12);
+    setCountMoviesAlso(3);
+  } else {
+    setCountMovies(12);
+    setCountMoviesAlso(3);
+  }
+}
 
 function changeFormatTime(duration) {
   const minutes = duration % 60;
@@ -102,7 +131,9 @@ function handleSignout() {
               idLoggedIn={isLoggedIn}
               element={<Movies
               idLoggedIn={isLoggedIn}
-              duration={changeFormatTime} />
+              duration={changeFormatTime}
+              countMovies={countMovies}
+              countMoviesAlso={countMoviesAlso} />
             } />
           } />
           <Route path='/saved-movies' element={
