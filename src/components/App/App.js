@@ -114,6 +114,9 @@ function handleSignout() {
   auth.loggout()
   .then(() => {
     setIsLoggedIn(false);
+    localStorage.removeItem('searchMovies');
+    localStorage.removeItem('serachInputValue');
+    localStorage.removeItem('movies');
     navigate('/signin', { replace: true });
   })
   .catch((err) => console.lof(err));
