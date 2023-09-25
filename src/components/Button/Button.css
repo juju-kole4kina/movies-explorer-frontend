@@ -5,11 +5,11 @@
   border: none;
   padding: 0;
   transition: opacity 0.3s ease;
-  cursor: pointer;
 }
 
 .button:hover {
   opacity: 0.8;
+  cursor: pointer;
 }
 
 .button_type_more {
@@ -20,6 +20,14 @@
   font-size: 12px;
   line-height: 1;
   background-color: rgba(249, 249, 249, 1);
+}
+
+.button_type_disabled {
+  opacity: 0.4;
+}
+
+.button_type_disabled:hover {
+  cursor: default;
 }
 
 .button_type_more-disabled {

@@ -7,46 +7,41 @@ import Input from '../Input/Input';
 
 import { CurrentUserContext } from '../../context/CurrentUserCotext';
 
+import FormValidator from '../../hook/Validator';
+
 function Profile(props) {
 const currentUser = useContext(CurrentUserContext);
 
+const { values, setValues, handleChange, errors, isValid } = FormValidator();
+
 const [isEditProfile, setEditProfile] = useState(false);
-const [name, setName] = useState('');
-const [email, setEmail] = useState('');
 
 useEffect(() => {
-  if (currentUser.name) {
-    setName(currentUser.name);
-  }
-
-  if (currentUser.email) {
-    setEmail(currentUser.email);
-  }
-}, [currentUser])
+  setValues({
+    name: currentUser.name,
+    email: currentUser.email
+  })
+}, [setValues, currentUser.name, currentUser.email])
 
 function handleEditProfileClick() {
   setEditProfile(true);
 }
 
-function handleNameChange(e) {
-  setName(e.target.value);
-}
-
-function handleEmailChange(e) {
-  setEmail(e.target.value);
-}
+const notDisabledBtn = isValid && (values.name !== currentUser.name || values.email !== currentUser.email);
 
 function handleSubmit(e) {
+  const { name, email } = values;
   e.preventDefault();
   props.onUpdateUser({
     name,
     email,
   });
+  setEditProfile(false);
 }
 
   return(
     <>
-    < Header />
+    < Header isLoggedIn={props.isLoggedIn} />
     <main className="profile">
       <section className="profile__section">
         <h2 className="profile-header">Привет, {currentUser.name}!</h2>
@@ -66,14 +61,14 @@ function handleSubmit(e) {
               <button type="button" className="profile__button profile__button_type_exit link-hover" onClick={props.isSignout}>Выйти из аккаунта</button>
             </div>
         </div>
-        <form method="POST" className={`profile__form-container ${isEditProfile ? "profile__form-container_active" : ""}`}>
+        <form onSubmit={handleSubmit} method="POST" className={`profile__form-container ${isEditProfile ? "profile__form-container_active" : ""}`}>
           <fieldset className="profile__input profile-input-list">
-            <Input name="name" value={isName} onChange={handleNameChange} id="input-name" label="Имя" type="text" placeholder="Ваше имя" min="2" max="30" formName="profile" />
-            <Input name="email" value={isEmail} onChange={handleEmailChange} id="imput-email" label="Email" type="email" placeholder="example@example.ru" formName="profile" />
+            <Input name="name" value={values.name || []} onChange={handleChange} id="input-name" label="Имя" type="text" placeholder="Ваше имя" min="2" max="30" formName="profile" required />
+            <Input name="email" value={values.email || []} onChange={handleChange} pattern="^([^ ]+@[^ ]+\.[a-z]{2,6}|)$" id="imput-email" label="Email" type="email" placeholder="example@example.ru" formName="profile" required />
           </fieldset>
           <div className="profile__form-footer">
-            <span className="profile__error-message">{props.errorName}</span>
-            <button type="submit" className="profile__submit-button button-hover">Сохранить</button>
+            <span className="profile__error-message">{props.errMessage || errors.name || errors.email || ''}</span>
+            <button type="submit" className={`profile__submit-button ${notDisabledBtn ? "button-hover" : 'button_type_disabled'} `} disabled={notDisabledBtn ? false : true}>{props.isLoading === false ?"Сохранить" : "Сохранение..."}</button>
           </div>
         </form>
       </section>

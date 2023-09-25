@@ -27,6 +27,8 @@ const [currentUser, setCurrentUser] = useState({});
 const [isLoggedIn, setIsLoggedIn] = useState(false);
 const [email, setEmail] = useState('');
 const [movies, setMovies] = useState([]);
+const [errMessage, setErrMessage] = useState('');
+const [isLoading, setIsLoading] = useState(false);
 
 const [countMovies, setCountMovies] = useState(0);
 const [countMoviesAlso, setCountMoviesAlso] = useState(0);
@@ -123,6 +125,7 @@ function handleSignout() {
 }
 
 function handleUpdateUserData({ name, email }) {
+  isLoading(true);
   mainApi.updateUserData(name, email)
   .then((data) => {
     setCurrentUser({
@@ -130,8 +133,19 @@ function handleUpdateUserData({ name, email }) {
       email: data.email
     });
   })
-  .catch((err) => console.log(err));
-};
+  .catch((err) => {
+    if (err === 409) {
+      setErrMessage('Пользователь с таким email уже существует');
+    }
+
+    if (err === 500) {
+      setErrMessage('При обновлении профиля произошла ошибка');
+    }
+  })
+  .finally(() => setIsLoading(false))
+}
+
+
 
   return(
     <CurrentUserContext.Provider value={currentUser}>
@@ -165,7 +179,9 @@ function handleUpdateUserData({ name, email }) {
             element={<Profile
               idLoggedIn={isLoggedIn}
               onUpdateUser={handleUpdateUserData}
-              isSignout={handleSignout} />
+              isSignout={handleSignout}
+              errMessage={errMessage}
+              isLoading={isLoading} />
             } />
           } />
           <Route path='*' element={<PageNotFound />} />
