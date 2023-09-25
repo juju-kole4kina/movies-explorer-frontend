@@ -1,16 +1,28 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import './Profile.css';
 import Header from '../Header/Header';
 import Input from '../Input/Input';
 
+import { CurrentUserContext } from '../../context/CurrentUserCotext';
+
 function Profile(props) {
-const navigate = useNavigate();
+const currentUser = useContext(CurrentUserContext);
 
 const [isEditProfile, setEditProfile] = useState(false);
-const [isName, setName] = useState('');
-const [isEmail, setEmail] = useState('');
+const [name, setName] = useState('');
+const [email, setEmail] = useState('');
+
+useEffect(() => {
+  if (currentUser.name) {
+    setName(currentUser.name);
+  }
+
+  if (currentUser.email) {
+    setEmail(currentUser.email);
+  }
+}, [currentUser])
 
 function handleEditProfileClick() {
   setEditProfile(true);
@@ -24,21 +36,29 @@ function handleEmailChange(e) {
   setEmail(e.target.value);
 }
 
+function handleSubmit(e) {
+  e.preventDefault();
+  props.onUpdateUser({
+    name,
+    email,
+  });
+}
+
   return(
     <>
     < Header />
     <main className="profile">
       <section className="profile__section">
-        <h2 className="profile-header">Привет, Юлия!</h2>
+        <h2 className="profile-header">Привет, {currentUser.name}!</h2>
         <div className={`profile__data-container ${isEditProfile ? "profile__data-container_active" : ""}`}>
           <ul className="profile__data-list">
             <li className="profile__data-item">
               <p className="profile__data-item-name">Имя</p>
-              <p className="profile__data-item-value">Юлия</p>
+              <p className="profile__data-item-value">{currentUser.name}</p>
             </li>
             <li className="profile__data-item">
               <p className="profile__data-item-name">E-mail</p>
-              <p className="profile__data-item-value">example@example.ru</p>
+              <p className="profile__data-item-value">{currentUser.email}</p>
             </li>
           </ul>
           <div className="profile__buttons">

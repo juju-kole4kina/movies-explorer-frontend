@@ -23,7 +23,7 @@ import { CurrentUserContext } from '../../context/CurrentUserCotext';
 function App() {
 const navigate = useLocation();
 
-const [currentUser, setCurrenrUser] = useState({});
+const [currentUser, setCurrentUser] = useState({});
 const [isLoggedIn, setIsLoggedIn] = useState(false);
 const [email, setEmail] = useState('');
 const [movies, setMovies] = useState([]);
@@ -104,7 +104,7 @@ function checkToken() {
   auth.getCurrentUser()
   .then((res) => {
     setIsLoggedIn(true);
-    setCurrenrUser(res);
+    setCurrentUser(res);
     setEmail(res.email);
     navigate('/', { replace: true });
   })
@@ -121,6 +121,17 @@ function handleSignout() {
   })
   .catch((err) => console.lof(err));
 }
+
+function handleUpdateUserData({ name, email }) {
+  mainApi.updateUserData(name, email)
+  .then((data) => {
+    setCurrentUser({
+      name: data.name,
+      email: data.email
+    });
+  })
+  .catch((err) => console.log(err));
+};
 
   return(
     <CurrentUserContext.Provider value={currentUser}>
@@ -153,6 +164,7 @@ function handleSignout() {
             idLoggedIn={isLoggedIn}
             element={<Profile
               idLoggedIn={isLoggedIn}
+              onUpdateUser={handleUpdateUserData}
               isSignout={handleSignout} />
             } />
           } />
