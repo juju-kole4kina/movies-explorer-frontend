@@ -19,6 +19,14 @@ import { auth } from '../../utils/auth';
 
 import { CurrentUserContext } from '../../context/CurrentUserCotext';
 
+import {
+  REGISTER_ERR_MESSAGE,
+  UPDATE_ERR_MESSAGE,
+  DOUBLE_EMAIL_ERR_MESSAGE,
+  WRONG_LOGIN_OR_PASSWORD_ERR_MESSAGE,
+  AUTH_UNCORRECT_TOKEN_ERR_MESSAGE
+} from '../../utils/constants';
+
 
 function App() {
 const navigate = useLocation();
@@ -86,11 +94,21 @@ function changeFormatTime(duration) {
 }
 
 function handleRegister({ name, email, password }) {
+  setIsLoading(true);
   auth.createUser(name, email, password)
   .then(() => {
     navigate('/signin', { repalce: true });
   })
-  .catch((err) => console.log(err));
+  .catch((err) => {
+    if (err.status === 409) {
+      setErrMessage(DOUBLE_EMAIL_ERR_MESSAGE);
+    }
+    if (err.status === 500) {
+      setErrMessage(REGISTER_ERR_MESSAGE);
+    }
+    console.log('Error: ' + err.status);
+  })
+  .finally(() => setIsLoading(false));
 }
 
 function handleLogin({ email, password }) {
@@ -152,8 +170,8 @@ function handleUpdateUserData({ name, email }) {
       <div className="page">
         <Routes>
           <Route path='/' element={<Main />} />
-          <Route path='/signup' element={<Register isRegister={handleRegister} />} />
-          <Route path='/signin' element={<Login />} isLogin={handleLogin} />
+          <Route path='/signup' element={<Register isRegister={handleRegister} errMessage={errMessage} isLoading={isLoading} />} />
+          <Route path='/signin' element={<Login />} isLogin={handleLogin} errMessage={errMessage} isLoading={isLoading} />
           <Route path='/movies' element={
             <ProtectedRoute
               idLoggedIn={isLoggedIn}

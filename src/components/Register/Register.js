@@ -30,6 +30,7 @@ function Register(props) {
         linkText="Войти"
         onSubmit={handleSubmit}
         disabled={!isValid}
+        errorMessage={props.errMessage}
       >
         <Input formName="form" value={values.name} onChange={handleChange} errorName={errors.name || ''} name="name" id="reg-name" label="Имя" type="text" placeholder="Ваше имя" min="2" max="30" required />
         <Input formName="form" value={values.email} onChange={handleChange} pattern="^([^ ]+@[^ ]+\.[a-z]{2,6}|)$" errorName={errors.email || ''} name="email" id="reg-email" label="E-mail" type="email" placeholder="example@example.com" required />
