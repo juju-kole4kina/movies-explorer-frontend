@@ -24,7 +24,7 @@ function Register(props) {
       <Form
         name="register"
         title="Добро пожаловать!"
-        buttonText="Зарегистрироваться"
+        buttonText={props.isLoading === false ? "Зарегистрироваться" : "Регистрация..."}
         text="Уже зарегистрированы?"
         endpoint="/signin"
         linkText="Войти"
