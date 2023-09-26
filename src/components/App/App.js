@@ -112,12 +112,23 @@ function handleRegister({ name, email, password }) {
 }
 
 function handleLogin({ email, password }) {
+  setIsLoading(true);
   auth.login(email, password)
   .then(() => {
     setIsLoggedIn(true);
     navigate('/', { repalce: true });
   })
-  .catch((err) => console.log(err));
+  .catch((err) => {
+    if (err.status === 401) {
+      setErrMessage(WRONG_LOGIN_OR_PASSWORD_ERR_MESSAGE);
+    }
+
+    if (err.status === 500) {
+      setErrMessage(AUTH_UNCORRECT_TOKEN_ERR_MESSAGE);
+    }
+    console.log('Error: ' + err.status);
+  })
+  .finally(() => setIsLoading(false));
 }
 
 function checkToken() {
@@ -128,6 +139,7 @@ function checkToken() {
     setEmail(res.email);
     navigate('/', { replace: true });
   })
+  .catch((err) => console.log('Error: ' + err.status));
 }
 
 function handleSignout() {

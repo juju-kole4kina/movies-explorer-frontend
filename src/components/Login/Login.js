@@ -24,15 +24,16 @@ function Login(props) {
       <Form
         name="login"
         title="Рады видеть!"
-        buttonText="Войти"
+        buttonText={props.isLoading === false ? "Войти" : "Вход..."}
         text="Ещё не зарегистрированы?"
         endpoint="/signup"
         linkText="Регистрация"
         onSubmit={handleSubmit}
         disabled={!isValid}
+        errorMessage={props.errorMessage}
       >
-        <Input formName="form" valuse={values.email} onChange={handleChange} errorName={errors.email || ''} pattern="^([^ ]+@[^ ]+\.[a-z]{2,6}|)$" name="email" id="reg-email" label="E-mail" type="email" placeholder="example@example.com" min="2" max="30" requred />
-        <Input formName="form" valuse={values.password} onChange={handleChange} errorName={errors.password || ''} name="password" id="reg-password" label="Пароль" type="password" placeholder="Введите пароль" min="8" max="30" requred />
+        <Input formName="form" valuse={values.email || []} onChange={handleChange} errorName={errors.email || ''} pattern="^([^ ]+@[^ ]+\.[a-z]{2,6}|)$" name="email" id="reg-email" label="E-mail" type="email" placeholder="example@example.com" min="2" max="30" requred />
+        <Input formName="form" valuse={values.password || []} onChange={handleChange} errorName={errors.password || ''} name="password" id="reg-password" label="Пароль" type="password" placeholder="Введите пароль" min="8" max="30" requred />
       </Form>
     </main>
   );
