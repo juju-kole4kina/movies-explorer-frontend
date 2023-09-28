@@ -9,59 +9,94 @@ import MoviesCard from './MoviesCard/MoviesCard';
 import Preloader from './Preloader/Preloader';
 import NoResult from './NoResult/NoResult';
 
+import { EMPTY_INPUT_ERR_MESSAGE } from '../../utils/constants.js';
+
 function Movies(props) {
   const [isLoading, setIsLoading] = useState(false);
+  const [filterChecked, setFilterChecked] = useState(
+    JSON.parse(localStorage.getItem('filterChecked')) || false
+  );
+  const [serverErr, setServerErr] = useState(false);
 
-  const [getMovieList, setGetMoviList] = useState([]);
-  const [inputValue, setInputValue] = useState('');
-  const [filterChecked, setFilterChecked] = useState(false);
-  const [errorMessage, setErrorMessasge] = useState('');
-
+  const [foundMovies, setFoundMovies] = useState(
+    JSON.parse(localStorage.getItem('foundMovies')) || []
+  );
   const [showedMovies, setShowedMovies] = useState([]);
   const [hiddenMovies, setHiddenMovies] = useState([]);
 
-  useEffect(() => {
-    setShowedMovies(getMovieList.slice(0, props.countMovies));
-    setHiddenMovies(getMovieList.slice(props.countMovies));
-  }, [getMovieList, props.countMovies]);
+  const [inputValue, setInputValue] = useState(
+    JSON.parse(localStorage.getItem('inputValue')) || ''
+  );
+  const [errorMessage, setErrorMessasge] = useState('');
 
-  function onChangeInputSearch(e) {
+  useEffect(() => {
+    if (foundMovies !== null && Object.keys(foundMovies).length !== 0) {
+      setShowedMovies(foundMovies.slice(0, props.countMovies));
+      setHiddenMovies(foundMovies.slice(props.countMovies));
+    }
+  }, [foundMovies, props.countMovies]);
+
+  useEffect(() => {
+    localStorage.setItem('filterChecked', filterChecked);
+    handleFilter();
+  }, [filterChecked]);
+
+  function handleChangeSearch(e) {
     setInputValue(e.target.value);
   }
 
-  function handleFilter(e) {
+  function handleChangeFilter(e) {
     setFilterChecked(e.target.checked);
+  }
+
+  function handleFilter() {
+    if (filterChecked === true) {
+      const filteredMovieList = foundMovies.filter((movie) => {
+        return movie.duration <= 40;
+      });
+      localStorage.setItem('filteredMovies', JSON.stringify(filteredMovieList));
+      setFoundMovies(filteredMovieList);
+    } else {
+      setFoundMovies(JSON.parse(localStorage.getItem('foundMovies')));
+    }
   }
 
   function handleSearch(e) {
     e.preventDefault();
     setIsLoading(true);
-    let movieList = JSON.parse(localStorage.getItem('movies'));
-    let searchMovieList = movieList.filter((movie) => {
-      return (movie.nameRU.toLowerCase() === inputValue.toLowerCase()) ||
-      (movie.nameEN.toLowerCase() === inputValue.toLowerCase()) ||
-      (movie.country.toLowerCase() === inputValue.toLowerCase()) ||
-      (movie.director.toLowerCase() === inputValue.toLowerCase()) ||
-      (movie.year === inputValue) || setErrorMessasge('Ничего не найдено');
+    localStorage.setItem('inputValue', inputValue);
+
+    let movieListFromApi = JSON.parse(localStorage.getItem('movies'));
+
+    if (
+      movieListFromApi === null ||
+      Object.keys(movieListFromApi).length === 0
+    ) {
+      props.getMoviesFromApi();
+      props.errorMessage === '' ? setServerErr(false) : setServerErr(true);
+      movieListFromApi = JSON.parse(localStorage.getItem('movies'));
+    };
+
+    let foundMovieList = movieListFromApi.filter((movie) => {
+      return (
+        movie.nameRU.toLowerCase().includes(inputValue.toLowerCase()) ||
+        movie.nameEN.toLowerCase().includes(inputValue.toLowerCase())
+      );
     });
-    setGetMoviList(searchMovieList);
+    localStorage.setItem('foundMovies', JSON.stringify())
+    setFoundMovies(foundMovieList);
     setIsLoading(false);
-    if (filterChecked === true) {
-      let filterSearchMovieList = searchMovieList.filter((movie) => {
-        return movie.duration <= 40;
-      });
-      setGetMoviList(filterSearchMovieList);
-      setIsLoading(false);
-    }
+
+    handleFilter();
 
     if (inputValue === '') {
-      setErrorMessasge('Нужно ввести ключевое слово');
+      setErrorMessasge(EMPTY_INPUT_ERR_MESSAGE);
     } else {
       setErrorMessasge('');
     }
   }
 
-  function showMore(e) {
+  function handleShowMore(e) {
     const showedMoviesAlso = [ ...showedMovies, ...hiddenMovies.slice(0, props.countMoviesAlso)];
 
     setShowedMovies(showedMoviesAlso);
@@ -74,33 +109,37 @@ function Movies(props) {
       <main className="movies">
         <SearchForm
         checked={filterChecked}
-        handleFilter={handleFilter}
+        handleFilter={handleChangeFilter}
         errorMessage={errorMessage}
         onSubmit={handleSearch}
         value={inputValue}
-        onChange={onChangeInputSearch}
+        onChange={handleChangeSearch}
         />
         {isLoading === true ? <Preloader /> : null}
-        {showedMovies === null ? <NoResult /> : null}
-        <MoviesCardList
-        movies={showedMovies}
-        handleShowMore={showMore}
-        hiddenMovies={hiddenMovies}
-        >
-        {getMovieList.map((movie) => (
-        <li key={movie.id}>
-          <MoviesCard
-          cardName={movie.nameRU}
-          timeline={props.duration(movie.duration)}
-          link={movie.trailerLink}
-          alt={movie.image.name}
-          img={movie.image.url}
-          imgMiddle={movie.image.formats.thumbnail.url}
-          imgSmall={movie?.image?.formats?.small?.url}
-          />
-        </li>
-        ))}
-        </MoviesCardList>
+        {(showedMovies === null || Object.keys(showedMovies).length === 0) &&
+        !isLoading ? (
+          <NoResult />
+        ) : (
+          <MoviesCardList
+            movies={showedMovies}
+            handleShowMore={handleShowMore}
+            hiddenMovies={hiddenMovies}
+          >
+          {showedMovies.map((movie) => (
+            <li key={movie.id}>
+              <MoviesCard
+                cardName={movie.nameRU}
+                timeline={props.duration(movie.duration)}
+                link={movie.trailerLink}
+                alt={movie.image.name}
+                img={movie.image.url}
+                imgMiddle={movie.image.formats.thumbnail.url}
+                imgSmall={movie?.image?.formats?.small?.url}
+              />
+            </li>
+          ))}
+          </MoviesCardList>
+        )}
       </main>
       <Footer />
     </>
