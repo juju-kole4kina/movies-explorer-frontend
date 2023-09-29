@@ -42,7 +42,7 @@ function Header(props) {
       <div className={`header__burger-menu link-hover ${!isLoggedIn ? "header__burger-menu_display_none" : ""} ${isMobileMenuOpen ? "header__burger-menu_active" : ""}`} onClick={toggleMenu}>
         <span></span>
       </div>
-      <nav className={`menu ${isMobileMenuOpen ? "menu_mobile-menu-active" : ""} ${isLoggedIn ? "menu_isLogged" : ""}`}>
+      <nav className={`menu ${isMobileMenuOpen ? "menu_mobile-menu-active menu_isLogged_active" : ""} ${isLoggedIn ? "menu_isLogged" : ""}`}>
         {isLoggedIn ? isLoggedNav : isNotLoggedNav}
       </nav>
     </header>
