@@ -118,7 +118,7 @@ function Movies(props) {
         {isLoading === true ? <Preloader /> : null}
         {(showedMovies === null || Object.keys(showedMovies).length === 0) &&
         !isLoading ? (
-          <NoResult />
+          <NoResult serverErr={serverErr} />
         ) : (
           <MoviesCardList
             movies={showedMovies}
