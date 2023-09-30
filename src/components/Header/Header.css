@@ -233,7 +233,7 @@
   }
 
   .menu_isLogged_active {
-    z-index: -3;
+    z-index: 3;
   }
 
   .menu_mobile-menu-active {
