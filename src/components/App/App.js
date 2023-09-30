@@ -284,6 +284,7 @@ function handleUpdateUserData({ name, email }) {
                     errMessage={errMessage}
                     onSaved={handleSavedMovie}
                     onDeleted={handleDeleteSavedMovie}
+                    savedMovies={savedMovies}
                   />
                 }
               />

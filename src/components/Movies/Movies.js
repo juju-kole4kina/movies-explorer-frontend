@@ -37,6 +37,8 @@ function Movies(props) {
     if (foundMovies !== null && Object.keys(foundMovies).length !== 0) {
       setShowedMovies(foundMovies.slice(0, props.countMovies));
       setHiddenMovies(foundMovies.slice(props.countMovies));
+    } else {
+      setShowedMovies([]);
     }
   }, [foundMovies, props.countMovies]);
 
@@ -69,11 +71,13 @@ function Movies(props) {
       props.getMoviesFromApi();
       props.errorMessage === '' ? setServerErr(false) : setServerErr(true);
       movieListFromApi = JSON.parse(localStorage.getItem('movies'));
+      setMoviesFromApi(movieListFromApi);
     };
 
     let foundMovieList = filterMovies(movieListFromApi, inputValue, filterChecked);
     localStorage.setItem('foundMovies', JSON.stringify(foundMovieList));
     setFoundMovies(foundMovieList);
+
     setIsLoading(false);
 
     if (inputValue === '') {
@@ -96,11 +100,11 @@ function Movies(props) {
       <main className="movies">
         <SearchForm
         checked={filterChecked}
-        handleFilter={handleChangeFilter}
+        onChangeFilter={handleChangeFilter}
+        onChange={handleChangeSearch}
         errorMessage={errorMessage}
         onSubmit={handleSearch}
         value={inputValue}
-        onChange={handleChangeSearch}
         />
         {isLoading === true ? <Preloader /> : null}
         {(showedMovies === null || Object.keys(showedMovies).length === 0) &&
@@ -115,6 +119,7 @@ function Movies(props) {
           {showedMovies.map((movie) => (
             <li key={movie.id}>
               <MoviesCard
+                movie={movie}
                 cardName={movie.nameRU}
                 timeline={props.duration(movie.duration)}
                 link={movie.trailerLink}
@@ -122,8 +127,9 @@ function Movies(props) {
                 img={movie.image.url}
                 imgMiddle={movie.image.formats.thumbnail.url}
                 imgSmall={movie?.image?.formats?.small?.url}
-                savedMovies={props.onSaved}
+                savedMovies={props.savedMovies}
                 handleDelete={props.onDeleted}
+                handleSavedMovies={props.onSaved}
               />
             </li>
           ))}
@@ -132,7 +138,6 @@ function Movies(props) {
       </main>
       <Footer />
     </>
-
   );
 }
 
