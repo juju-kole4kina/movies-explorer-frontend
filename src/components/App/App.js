@@ -36,13 +36,15 @@ import {
 
 
 function App() {
-const navigate = useLocation();
+const navigate = useNavigate();
 
 const [isLoggedIn, setIsLoggedIn] = useState(false);
 const [isLoading, setIsLoading] = useState(false);
+
 const [currentUser, setCurrentUser] = useState({});
 const [movies, setMovies] = useState([])
 const [savedMovies, setSavedMovies] = useState([]);
+
 const [email, setEmail] = useState('');
 const [errMessage, setErrMessage] = useState('');
 
@@ -128,158 +130,203 @@ function changeFormatTime(duration) {
 
 function handleSavedMovie(movie) {
   mainApi
-  .createSaveMovie(movie)
-  .then((newMovie) => {
-    setSavedMovies([newMovie, ...savedMovies]);
-  })
-  .catch((err) => console.log("Error: " + err.status));
+    .createSaveMovie(movie)
+    .then((newMovie) => {
+      setSavedMovies([newMovie, ...savedMovies]);
+    })
+    .catch((err) => console.log("Error: " + err.status));
 }
 
 function handleDeleteSavedMovie(movie) {
+  const movieToDeleteId = movie.id ?? movie.movieId;
   const savedMovieId = savedMovies.find(
-    (i) => i.movieId === movie.movieId || i.movieId === movie.id
+    (i) => i.movieId === movieToDeleteId
   )._id;
 
   mainApi
     .deleteSaveMovie(savedMovieId)
     .then(() => {
-      setSavedMovies((savedMovie) =>
-        savedMovie.filter(
-          (i) => i.movieId !== movie.id || i._id !== savedMovieId
-        )
-      );
+      const filterSavedMovies = savedMovies.filter(
+        (i) => i.movieId !== movieToDeleteId
+      )
+      setSavedMovies(filterSavedMovies);
     })
     .catch((err) => console.log("Error: " + err.status));
 }
 
 function handleRegister({ name, email, password }) {
   setIsLoading(true);
-  auth.createUser(name, email, password)
-  .then(() => {
-    navigate('/signin', { repalce: true });
-  })
-  .catch((err) => {
-    if (err.status === 409) {
-      setErrMessage(DOUBLE_EMAIL_ERR_MESSAGE);
-    }
-    if (err.status === 500) {
-      setErrMessage(REGISTER_ERR_MESSAGE);
-    }
-    console.log('Error: ' + err.status);
-  })
-  .finally(() => setIsLoading(false));
+  auth
+    .createUser(name, email, password)
+    .then(() => {
+      navigate('/movies', { repalce: true });
+    })
+    .catch((err) => {
+      if (err.status === 409) {
+        setErrMessage(DOUBLE_EMAIL_ERR_MESSAGE);
+      }
+      if (err.status === 500) {
+        setErrMessage(REGISTER_ERR_MESSAGE);
+      }
+      console.log('Error: ' + err.status);
+    })
+    .finally(() => setIsLoading(false));
 }
 
 function handleLogin({ email, password }) {
   setIsLoading(true);
-  auth.login(email, password)
-  .then(() => {
-    setIsLoggedIn(true);
-    navigate('/', { repalce: true });
-  })
-  .catch((err) => {
-    if (err.status === 401) {
-      setErrMessage(WRONG_LOGIN_OR_PASSWORD_ERR_MESSAGE);
-    }
+  auth
+    .login(email, password)
+    .then(() => {
+      setIsLoggedIn(true);
+      navigate('/movies', { repalce: true });
+    })
+    .catch((err) => {
+      if (err.status === 401) {
+        setErrMessage(WRONG_LOGIN_OR_PASSWORD_ERR_MESSAGE);
+      }
 
-    if (err.status === 500) {
-      setErrMessage(AUTH_UNCORRECT_TOKEN_ERR_MESSAGE);
-    }
-    console.log('Error: ' + err.status);
-  })
-  .finally(() => setIsLoading(false));
+      if (err.status === 500) {
+        setErrMessage(AUTH_UNCORRECT_TOKEN_ERR_MESSAGE);
+      }
+      console.log('Error: ' + err.status);
+    })
+    .finally(() => setIsLoading(false));
 }
 
 function checkToken() {
-  auth.getCurrentUser()
-  .then((res) => {
-    setIsLoggedIn(true);
-    setCurrentUser(res);
-    setEmail(res.email);
-    navigate('/', { replace: true });
-  })
-  .catch((err) => console.log('Error: ' + err.status));
+  auth
+    .getCurrentUser()
+    .then((res) => {
+      setIsLoggedIn(true);
+      setCurrentUser(res);
+      setEmail(res.email);
+      navigate('/movies', { replace: true });
+    })
+    .catch((err) => console.log('Error: ' + err.status));
 }
 
 function handleSignout() {
-  auth.loggout()
-  .then(() => {
-    setIsLoggedIn(false);
-    localStorage.removeItem('searchMovies');
-    localStorage.removeItem('serachInputValue');
-    localStorage.removeItem('movies');
-    navigate('/signin', { replace: true });
-  })
-  .catch((err) => console.lof(err));
+  auth
+    .loggout()
+    .then(() => {
+      setIsLoggedIn(false);
+      localStorage.removeItem('foundMovies');
+      localStorage.removeItem('inputValue');
+      localStorage.removeItem('movies');
+      localStorage.removeItem("filterChecked");
+      localStorage.removeItem("filtredMovies");
+      navigate('/signin', { replace: true });
+    })
+    .catch((err) => console.log("Error: " + err.status));
 }
 
 function handleUpdateUserData({ name, email }) {
-  isLoading(true);
-  mainApi.updateUserData(name, email)
-  .then((data) => {
-    setCurrentUser({
-      name: data.name,
-      email: data.email
-    });
-  })
-  .catch((err) => {
-    if (err === 409) {
-      setErrMessage('Пользователь с таким email уже существует');
-    }
+  setIsLoading(true);
+  mainApi
+    .updateUserData(name, email)
+    .then((data) => {
+      setCurrentUser({
+        name: data.name,
+        email: data.email
+      });
+    })
+    .catch((err) => {
+      if (err === 409) {
+        setErrMessage(DOUBLE_EMAIL_ERR_MESSAGE);
+      }
 
-    if (err === 500) {
-      setErrMessage('При обновлении профиля произошла ошибка');
-    }
-  })
-  .finally(() => setIsLoading(false))
+      if (err === 500) {
+        setErrMessage(UPDATE_ERR_MESSAGE);
+      }
+      console.log("Error: " + err.status);
+    })
+    .finally(() => setIsLoading(false))
 }
 
   return(
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <Routes>
-          <Route path='/' element={<Main />} />
-          <Route path='/signup' element={<Register isRegister={handleRegister} errMessage={errMessage} isLoading={isLoading} />} />
-          <Route path='/signin' element={<Login />} isLogin={handleLogin} errMessage={errMessage} isLoading={isLoading} />
-          <Route path='/movies' element={
-            <ProtectedRoute
-              idLoggedIn={isLoggedIn}
-              element={<Movies
-              idLoggedIn={isLoggedIn}
-              duration={changeFormatTime}
-              countMovies={countMovies}
-              countMoviesAlso={countMoviesAlso}
-              getMoviesFromApi={getMoviesFromApi}
-              onSaved={handleSavedMovie}
-              onDeleted={handleDeleteSavedMovie} />
-            } />
-          } />
-          <Route path='/saved-movies' element={
-            <ProtectedRoute
-              idLoggedIn={isLoggedIn}
-              element={<SavedMovies
-              savedMovies={savedMovies}
-              idLoggedIn={isLoggedIn}
-              duration={changeFormatTime}
-              onDeleted={handleDeleteSavedMovie} />
-            } />
-          } />
-          <Route path='/profile' element={
-            <ProtectedRoute
-            idLoggedIn={isLoggedIn}
-            element={<Profile
-              idLoggedIn={isLoggedIn}
-              onUpdateUser={handleUpdateUserData}
-              isSignout={handleSignout}
-              errMessage={errMessage}
-              isLoading={isLoading} />
-            } />
-          } />
+          <Route path='/' element={<Main isLoggedIn={isLoggedIn} />} />
+          <Route
+            path='/signup'
+            element={
+              <Register
+                isRegister={handleRegister}
+                errMessage={errMessage}
+                isLoading={isLoading}
+              />
+            }
+          />
+          <Route
+            path='/signin'
+            element={
+              <Login
+                isLogin={handleLogin}
+                errMessage={errMessage}
+                isLoading={isLoading}
+              />
+            }
+          />
+          <Route
+            path='/movies'
+            element={
+              <ProtectedRoute
+                idLoggedIn={isLoggedIn}
+                element={
+                  <Movies
+                    idLoggedIn={isLoggedIn}
+                    duration={changeFormatTime}
+                    countMovies={countMovies}
+                    countMoviesAlso={countMoviesAlso}
+                    getMoviesFromApi={getMoviesFromApi}
+                    errMessage={errMessage}
+                    onSaved={handleSavedMovie}
+                    onDeleted={handleDeleteSavedMovie}
+                  />
+                }
+              />
+            }
+          />
+          <Route
+            path='/saved-movies'
+            element={
+              <ProtectedRoute
+                idLoggedIn={isLoggedIn}
+                element={
+                  <SavedMovies
+                    savedMovies={savedMovies}
+                    idLoggedIn={isLoggedIn}
+                    duration={changeFormatTime}
+                    setSavedMovies={setSavedMovies}
+                    onDeleted={handleDeleteSavedMovie}
+                  />
+                }
+              />
+            }
+          />
+          <Route
+            path='/profile'
+            element={
+              <ProtectedRoute
+                idLoggedIn={isLoggedIn}
+                element={
+                  <Profile
+                    idLoggedIn={isLoggedIn}
+                    onUpdateUser={handleUpdateUserData}
+                    isSignout={handleSignout}
+                    errMessage={errMessage}
+                    isLoading={isLoading}
+                  />
+                }
+              />
+            }
+          />
           <Route path='*' element={<PageNotFound />} />
         </Routes>
       </div>
     </CurrentUserContext.Provider>
-
   );
 }
 
