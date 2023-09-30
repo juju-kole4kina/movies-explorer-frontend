@@ -13,7 +13,7 @@ import Portfolio from './Portfolio/Portfolio';
 function Main(props) {
   return(
     <>
-      <Header />
+      <Header isLoggedIn={props.isLoggedIn} />
       <main className="content">
         <Promo />
         <AboutProject />
