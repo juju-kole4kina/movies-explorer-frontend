@@ -8,6 +8,7 @@ import MoviesCardList from './MoviesCardList/MoviesCardList';
 import MoviesCard from './MoviesCard/MoviesCard';
 import Preloader from './Preloader/Preloader';
 import NoResult from './NoResult/NoResult';
+import filterMovies from '../../utils/filter';
 
 import { EMPTY_INPUT_ERR_MESSAGE } from '../../utils/constants.js';
 
@@ -18,6 +19,9 @@ function Movies(props) {
   );
   const [serverErr, setServerErr] = useState(false);
 
+  const [moviesFromApi, setMoviesFromApi] = useState(
+    JSON.parse(localStorage.getItem("movies")) || []
+  );
   const [foundMovies, setFoundMovies] = useState(
     JSON.parse(localStorage.getItem('foundMovies')) || []
   );
@@ -37,8 +41,9 @@ function Movies(props) {
   }, [foundMovies, props.countMovies]);
 
   useEffect(() => {
+    const shortMovies = filterMovies(moviesFromApi, inputValue, filterChecked);
+    setFoundMovies(shortMovies);
     localStorage.setItem('filterChecked', filterChecked);
-    handleFilter();
   }, [filterChecked]);
 
   function handleChangeSearch(e) {
@@ -49,24 +54,13 @@ function Movies(props) {
     setFilterChecked(e.target.checked);
   }
 
-  function handleFilter() {
-    if (filterChecked === true) {
-      const filteredMovieList = foundMovies.filter((movie) => {
-        return movie.duration <= 40;
-      });
-      localStorage.setItem('filteredMovies', JSON.stringify(filteredMovieList));
-      setFoundMovies(filteredMovieList);
-    } else {
-      setFoundMovies(JSON.parse(localStorage.getItem('foundMovies')));
-    }
-  }
-
   function handleSearch(e) {
     e.preventDefault();
     setIsLoading(true);
     localStorage.setItem('inputValue', inputValue);
 
     let movieListFromApi = JSON.parse(localStorage.getItem('movies'));
+    setMoviesFromApi(movieListFromApi);
 
     if (
       movieListFromApi === null ||
@@ -77,17 +71,10 @@ function Movies(props) {
       movieListFromApi = JSON.parse(localStorage.getItem('movies'));
     };
 
-    let foundMovieList = movieListFromApi.filter((movie) => {
-      return (
-        movie.nameRU.toLowerCase().includes(inputValue.toLowerCase()) ||
-        movie.nameEN.toLowerCase().includes(inputValue.toLowerCase())
-      );
-    });
-    localStorage.setItem('foundMovies', JSON.stringify())
+    let foundMovieList = filterMovies(movieListFromApi, inputValue, filterChecked);
+    localStorage.setItem('foundMovies', JSON.stringify(foundMovieList));
     setFoundMovies(foundMovieList);
     setIsLoading(false);
-
-    handleFilter();
 
     if (inputValue === '') {
       setErrorMessasge(EMPTY_INPUT_ERR_MESSAGE);
@@ -105,7 +92,7 @@ function Movies(props) {
 
   return(
     <>
-      <Header />
+      <Header isLoggedIn={props.isLoggedIn} />
       <main className="movies">
         <SearchForm
         checked={filterChecked}
@@ -135,6 +122,8 @@ function Movies(props) {
                 img={movie.image.url}
                 imgMiddle={movie.image.formats.thumbnail.url}
                 imgSmall={movie?.image?.formats?.small?.url}
+                savedMovies={props.onSaved}
+                handleDelete={props.onDeleted}
               />
             </li>
           ))}

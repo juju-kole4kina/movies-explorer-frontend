@@ -24,19 +24,21 @@ import {
   UPDATE_ERR_MESSAGE,
   DOUBLE_EMAIL_ERR_MESSAGE,
   WRONG_LOGIN_OR_PASSWORD_ERR_MESSAGE,
-  AUTH_UNCORRECT_TOKEN_ERR_MESSAGE
+  AUTH_UNCORRECT_TOKEN_ERR_MESSAGE,
+  SEARCH_ERR_MESSAGE
 } from '../../utils/constants';
 
 
 function App() {
 const navigate = useLocation();
 
-const [currentUser, setCurrentUser] = useState({});
 const [isLoggedIn, setIsLoggedIn] = useState(false);
-const [email, setEmail] = useState('');
-const [movies, setMovies] = useState([]);
-const [errMessage, setErrMessage] = useState('');
 const [isLoading, setIsLoading] = useState(false);
+const [currentUser, setCurrentUser] = useState({});
+const [movies, setMovies] = useState([])
+const [savedMovies, setSavedMovies] = useState([]);
+const [email, setEmail] = useState('');
+const [errMessage, setErrMessage] = useState('');
 
 const [countMovies, setCountMovies] = useState(0);
 const [countMoviesAlso, setCountMoviesAlso] = useState(0);
@@ -46,13 +48,10 @@ useEffect(() => {
 }, [isLoggedIn]);
 
 useEffect(() => {
-  moviesApi.getMovies()
-  .then((movies) => {
-    localStorage.setItem('movies', JSON.stringify(movies));
-    setMovies(movies);
-  })
-  .catch((err) => console.log(err));
-}, []);
+  if (isLoggedIn) {
+    getSavedMovies();
+  }
+}, [isLoggedIn])
 
 useEffect(() => {
   onResize();
@@ -61,6 +60,34 @@ useEffect(() => {
   });
   return () => window.removeEventListener('resize', onResize);
 }, []);
+
+function getMoviesFromApi() {
+  moviesApi
+  .getMovies()
+  .then((movies) => {
+    localStorage.setItem("movies", JSON.stringify(movies));
+    setMovies(movies);
+  })
+  .catch((err) => {
+    if (err.status === 500) {
+      setErrMessage(SEARCH_ERR_MESSAGE);
+    }
+    console.log("Error: " + err.status);
+  });
+}
+function getSavedMovies() {
+  mainApi
+  .getSaveMovies()
+  .then((movies) => {
+    setSavedMovies(movies);
+  })
+  .catch((err) => {
+    if (err.status === 500) {
+      setErrMessage(SEARCH_ERR_MESSAGE);
+    }
+    console.log("Error: " + err.status);
+  });
+}
 
 function onResize() {
   const width = window.innerWidth;
@@ -91,6 +118,32 @@ function changeFormatTime(duration) {
   } else {
     return `${hour}ч ${minutes}м`;
   }
+}
+
+function handleSavedMovie(movie) {
+  mainApi
+  .createSaveMovie(movie)
+  .then((newMovie) => {
+    setSavedMovies([newMovie, ...savedMovies]);
+  })
+  .catch((err) => console.log("Error: " + err.status));
+}
+
+function handleDeleteSavedMovie(movie) {
+  const savedMovieId = savedMovies.find(
+    (i) => i.movieId === movie.movieId || i.movieId === movie.id
+  )._id;
+
+  mainApi
+    .deleteSaveMovie(savedMovieId)
+    .then(() => {
+      setSavedMovies((savedMovie) =>
+        savedMovie.filter(
+          (i) => i.movieId !== movie.id || i._id !== savedMovieId
+        )
+      );
+    })
+    .catch((err) => console.log("Error: " + err.status));
 }
 
 function handleRegister({ name, email, password }) {
@@ -175,8 +228,6 @@ function handleUpdateUserData({ name, email }) {
   .finally(() => setIsLoading(false))
 }
 
-
-
   return(
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -191,16 +242,20 @@ function handleUpdateUserData({ name, email }) {
               idLoggedIn={isLoggedIn}
               duration={changeFormatTime}
               countMovies={countMovies}
-              countMoviesAlso={countMoviesAlso} />
+              countMoviesAlso={countMoviesAlso}
+              getMoviesFromApi={getMoviesFromApi}
+              onSaved={handleSavedMovie}
+              onDeleted={handleDeleteSavedMovie} />
             } />
           } />
           <Route path='/saved-movies' element={
             <ProtectedRoute
               idLoggedIn={isLoggedIn}
               element={<SavedMovies
-              movies={movies}
+              savedMovies={savedMovies}
               idLoggedIn={isLoggedIn}
-              duration={changeFormatTime} />
+              duration={changeFormatTime}
+              onDeleted={handleDeleteSavedMovie} />
             } />
           } />
           <Route path='/profile' element={
