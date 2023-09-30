@@ -11,29 +11,22 @@ export default class Auth {
     return Promise.reject(res);
   }
 
-  createUser(data) {
+  createUser(name, email, password) {
     return fetch(`${this._url}/signup`, {
       method: 'POST',
       headers: this._headers,
       credentials: 'include',
-      body: JSON.stringify({
-        name: data.name,
-        email: data.email,
-        password: data.password
-      })
+      body: JSON.stringify({ name, email, password })
       .then((res) => this._checkResponse(res))
     })
   }
 
-  login(data) {
+  login(email, password) {
     return fetch(`${this._url}/signin`, {
       method: 'POST',
       headers: this._headers,
       credentials: 'include',
-      body: JSON.stringify({
-        email: data.email,
-        password: data.password
-      })
+      body: JSON.stringify({ email, password })
       .then((res) => this._checkResponse(res))
     })
   }
@@ -58,6 +51,7 @@ export default class Auth {
 }
 
 export const auth = new Auth({
-  url: 'https://api.movie-exp.kole4kina.nomoredomainsicu.ru',
-  headers: {'Content-Type': 'application/json'}
+  // url: 'https://api.movie-exp.kole4kina.nomoredomainsicu.ru',
+  url: 'http://localhost:3000',
+  headers: {'Content-Type': 'application/json', Accept: 'application/json'}
 })

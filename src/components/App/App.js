@@ -276,6 +276,7 @@ function handleUpdateUserData({ name, email }) {
                 idLoggedIn={isLoggedIn}
                 element={
                   <Movies
+                    movies={movies}
                     idLoggedIn={isLoggedIn}
                     duration={changeFormatTime}
                     countMovies={countMovies}

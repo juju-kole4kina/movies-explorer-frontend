@@ -8,18 +8,15 @@ export default class MainApi {
     if(res.ok) {
       return res.json();
     }
-    return Promise.reject(`Ошибка: ${res.status}`);
+    return Promise.reject(res);
   }
 
-  updateUserData(data) {
+  updateUserData(name, email) {
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
       credentials: 'include',
-      body: JSON.stringify({
-        name: data.name,
-        email: data.email
-      })
+      body: JSON.stringify({ name, email })
     })
     .then((res) => this._checkResponse(res))
   }
@@ -30,17 +27,17 @@ export default class MainApi {
       headers: this._headers,
       credentials: 'include',
       body: JSON.stringify({
-        country: data.countru,
+        country: data.country,
         director: data.director,
         duration: data.duration,
         year: data.year,
         description: data.description,
-        image: data.image,
+        image: 'https://api.nomoreparties.co' + data?.image?.url,
         trailerLink: data.trailerLink,
         nameRU: data.nameRU,
         nameEN: data.nameEN,
-        thumbnail: data.thumbnail,
-        movieId: data.movieId,
+        thumbnail: 'https://api.nomoreparties.co' + data?.image?.formats?.thumbnail?.url,
+        movieId: data.id,
       })
       .then((res) => this._checkResponse(res))
     })
@@ -55,8 +52,8 @@ export default class MainApi {
     .then((res) => this._checkResponse(res))
   }
 
-  deleteSaveMovie(movieid) {
-    return fetch(`${this._url}/movies/:movieId`, {
+  deleteSaveMovie(movieId) {
+    return fetch(`${this._url}/movies/${movieId}`, {
       method: 'DELETE',
       headers: this._headers,
       credentials: 'include',
@@ -66,6 +63,7 @@ export default class MainApi {
 }
 
 export const mainApi = new MainApi({
-  url: 'https://api.movie-exp.kole4kina.nomoredomainsicu.ru',
+  // url: 'https://api.movie-exp.kole4kina.nomoredomainsicu.ru',
+  url: 'http://localhost:3000',
   headers: {'Content-Type': 'application/json'}
 });
