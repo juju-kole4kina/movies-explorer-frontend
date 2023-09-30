@@ -5,6 +5,9 @@
 .form {
   display: flex;
   flex-direction: column;
+}
+
+.form-input-list {
   height: 485px;
 }
 
