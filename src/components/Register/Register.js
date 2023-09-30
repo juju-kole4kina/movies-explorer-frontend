@@ -31,8 +31,9 @@ function Register(props) {
         onSubmit={handleSubmit}
         disabled={!isValid}
         errorMessage={props.errMessage}
+        isValid={isValid}
       >
-        <Input formName="form" value={values.name || []} onChange={handleChange} errorName={errors.name || ''} name="name" id="reg-name" label="Имя" type="text" placeholder="Ваше имя" min="2" max="30" required />
+        <Input formName="form" value={values.name || []} onChange={handleChange} pattern="^[а-яА-ЯёЁa-zA-Z \-]+$" errorName={errors.name || ''} name="name" id="reg-name" label="Имя" type="text" placeholder="Ваше имя" min="2" max="30" required />
         <Input formName="form" value={values.email || []} onChange={handleChange} pattern="^([^ ]+@[^ ]+\.[a-z]{2,6}|)$" errorName={errors.email || ''} name="email" id="reg-email" label="E-mail" type="email" placeholder="example@example.com" required />
         <Input formName="form" value={values.password || []} onChange={handleChange} errorName={errors.password || ''} name="password" id="reg-password" label="Пароль" type="password" placeholder="Введите пароль" min="8" max="30" required />
       </Form>
