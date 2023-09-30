@@ -7,3 +7,11 @@ export const DOUBLE_EMAIL_ERR_MESSAGE = 'Пользователь с таким 
 export const REGISTER_ERR_MESSAGE = 'При регистрации пользователя произошла ошибка.';
 export const UPDATE_ERR_MESSAGE = 'При обновлении профиля произошла ошибка.';
 export const SERVER_ERR_MESSAGE = 'На сервере произошла ошибка';
+
+export const COUNT_MOVIES_1280 = 12;
+export const COUNT_MOVIES_950 = 8;
+export const COUNT_MOVIES_520 = 5;
+
+export const COUNT_MOVIES_ALSO_1280 = 8;
+export const COUNT_MOVIES_ALSO_950 = 8;
+export const COUNT_MOVIES_ALSO_520 = 8;

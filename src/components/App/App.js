@@ -1,7 +1,7 @@
 import '../../index.css';
 import './App.css';
 import React, { useEffect, useState } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
@@ -25,7 +25,13 @@ import {
   DOUBLE_EMAIL_ERR_MESSAGE,
   WRONG_LOGIN_OR_PASSWORD_ERR_MESSAGE,
   AUTH_UNCORRECT_TOKEN_ERR_MESSAGE,
-  SEARCH_ERR_MESSAGE
+  SEARCH_ERR_MESSAGE,
+  COUNT_MOVIES_1280,
+  COUNT_MOVIES_950,
+  COUNT_MOVIES_520,
+  COUNT_MOVIES_ALSO_1280,
+  COUNT_MOVIES_ALSO_950,
+  COUNT_MOVIES_ALSO_520
 } from '../../utils/constants';
 
 
@@ -93,17 +99,17 @@ function onResize() {
   const width = window.innerWidth;
 
   if (width <= 520) {
-    setCountMovies(5);
-    setCountMoviesAlso(2);
+    setCountMovies(COUNT_MOVIES_520);
+    setCountMoviesAlso(COUNT_MOVIES_ALSO_520);
   } else if (width <= 950) {
-    setCountMovies(8);
-    setCountMoviesAlso(2);
+    setCountMovies(COUNT_MOVIES_950);
+    setCountMoviesAlso(COUNT_MOVIES_ALSO_950);
   } else if (width <= 1280) {
-    setCountMovies(12);
-    setCountMoviesAlso(3);
+    setCountMovies(COUNT_MOVIES_1280);
+    setCountMoviesAlso(COUNT_MOVIES_ALSO_1280);
   } else {
-    setCountMovies(12);
-    setCountMoviesAlso(3);
+    setCountMovies(COUNT_MOVIES_1280);
+    setCountMoviesAlso(COUNT_MOVIES_ALSO_1280);
   }
 }
 
