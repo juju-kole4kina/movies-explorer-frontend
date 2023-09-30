@@ -42,7 +42,6 @@ function SavedMovies(props) {
     e.preventDefault();
     const foundMovies = filterMovies(savedMovies, inputValue, filterChecked);
     setFilteredMovies(foundMovies);
-    console.log(foundMovies);
 
     if (inputValue === "") {
       setErrorMessage(EMPTY_INPUT_ERR_MESSAGE);
@@ -64,9 +63,9 @@ function SavedMovies(props) {
           errorMessage={errorMessage}
         />
         {isLoading === true ? <Preloader /> : null}
-        {(savedMovies === null || Object.keys(savedMovies).length === 0) &&
+        {(filteredMovies === null || Object.keys(filteredMovies).length === 0) &&
         !isLoading ? (<NoResult serverErr={serverErr} />) : (
-          <MoviesCardList>
+          <MoviesCardList movies={foundMovies}>
           {filteredMovies.map((movie) => (
             <li key={movie._id}>
               <MoviesCard
@@ -85,7 +84,6 @@ function SavedMovies(props) {
           ))}
         </MoviesCardList>
         )}
-
       </main>
       <Footer />
     </>
