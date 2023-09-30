@@ -23,7 +23,9 @@ function SearchForm(props) {
             value={props.value}
             onChange={props.onChange}
             className="seach-form-section__input"
-            placeholder="Фильм" required
+            placeholder="Фильм"
+            name="movie"
+            required
           />
           <Button
             type="submit"
@@ -33,7 +35,9 @@ function SearchForm(props) {
             }
           />
         </div>
-        <span className="seach-form-section__error-message">{props.errorMessage}</span>
+        <span className="seach-form-section__error-message">
+          {props.errorMessage}
+        </span>
         <FilterCheckbox
         checked={props.checked}
         onChangeFilter={props.onChangeFilter}
