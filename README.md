@@ -35,4 +35,4 @@ Frontend https://movie-exp.kole4kina.nomoredomainsicu.ru
 
 Backend https://api.movie-exp.kole4kina.nomoredomainsicu.ru
 
-PullRequest: https://github.com/juju-kole4kina/movies-explorer-frontend/pull/2
+PullRequest https://github.com/juju-kole4kina/movies-explorer-frontend/pull/2
