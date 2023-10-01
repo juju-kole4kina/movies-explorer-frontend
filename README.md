@@ -31,5 +31,5 @@
 
 IP 84.201.179.80
 
-[Frontend](movie-exp.kole4kina.nomoredomainsicu.ru)
-[Backend](api.movie-exp.kole4kina.nomoredomainsicu.ru)
+Frontend: movie-exp.kole4kina.nomoredomainsicu.ru
+Backend: api.movie-exp.kole4kina.nomoredomainsicu.ru
