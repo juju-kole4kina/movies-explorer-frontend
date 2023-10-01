@@ -38,9 +38,8 @@ export default class MainApi {
         nameEN: data.nameEN,
         thumbnail: 'https://api.nomoreparties.co' + data?.image?.formats?.thumbnail?.url,
         movieId: data.id,
-      })
+      })})
       .then((res) => this._checkResponse(res))
-    })
   }
 
   getSaveMovies() {

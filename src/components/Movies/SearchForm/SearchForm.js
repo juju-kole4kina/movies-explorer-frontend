@@ -29,7 +29,7 @@ function SearchForm(props) {
           />
           <Button
             type="submit"
-            className="button_type_search"
+            className={`button_type_search ${props.isValid === false ? "button_type_disabled" : "button-hover"}`}
             buttonText={
               <img className="button__icon" src={arrow} alt="Кнопка поиска" />
             }

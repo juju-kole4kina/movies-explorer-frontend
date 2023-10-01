@@ -1,13 +1,15 @@
-function filterMovies(movies, searchQuery, isShort) {
-  const moviesByName = movies.filter((i) => {
+export function filterMoviesByName(movies, searchQuery) {
+  return movies.filter((i) => {
     return i.nameRU.toLowerCase().includes((searchQuery || '').toLowerCase()) ||
     i.nameEN.toLowerCase().includes((searchQuery || '').toLowerCase())
   });
-
-  if (isShort === true) {
-    return moviesByName.filter((i) => i.duration <= 40);
-  }
-  return moviesByName;
 }
 
-export default filterMovies;
+export function filterShorts(movies, filterEnabled) {
+  if (filterEnabled){
+    return movies.filter((i) => i.duration <= 40);
+  }
+  else {
+    return movies;
+  }
+}

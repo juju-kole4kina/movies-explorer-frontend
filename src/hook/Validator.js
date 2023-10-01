@@ -1,6 +1,9 @@
 import { useState, useCallback } from 'react';
+import { useLocation } from 'react-router-dom';
 
 function FormValidator() {
+const navigation = useLocation();
+
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
   const [isValid, setIsValid] = useState(false);
@@ -23,7 +26,7 @@ function FormValidator() {
     },[setValues, setErrors, setIsValid]
   );
 
-  return { values, handleChange, errors, isValid, resetForm };
+  return { values, setValues, handleChange, errors, isValid, resetForm };
 }
 
 export default FormValidator;

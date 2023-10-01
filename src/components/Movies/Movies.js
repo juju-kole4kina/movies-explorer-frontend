@@ -9,44 +9,53 @@ import MoviesCard from './MoviesCard/MoviesCard';
 import Preloader from './Preloader/Preloader';
 import NoResult from './NoResult/NoResult';
 import filterMovies from '../../utils/filter';
+// import FormValidator from '../../hook/Validator';
+import { filterMoviesByName, filterShorts } from '../../utils/filter';
 
 import { EMPTY_INPUT_ERR_MESSAGE } from '../../utils/constants.js';
 
 function Movies(props) {
+
   const [isLoading, setIsLoading] = useState(false);
   const [filterChecked, setFilterChecked] = useState(
     JSON.parse(localStorage.getItem('filterChecked')) || false
   );
+  let [allMoviesFromApi, setAllMoviesFromApi] = useState([]);
   const [serverErr, setServerErr] = useState(false);
+  const [isValid, setIsValid] = useState(false);
 
-  const [moviesFromApi, setMoviesFromApi] = useState(
-    JSON.parse(localStorage.getItem("movies")) || []
-  );
-  const [foundMovies, setFoundMovies] = useState(
+  const [foundByNameMovies, setFoundByNameMovies] = useState(
     JSON.parse(localStorage.getItem('foundMovies')) || []
   );
+
+  const [resultFilteredMovies, setResultFilteredMovies] = useState([]);//на вывод
+
   const [showedMovies, setShowedMovies] = useState([]);
   const [hiddenMovies, setHiddenMovies] = useState([]);
 
   const [inputValue, setInputValue] = useState(
-    JSON.parse(localStorage.getItem('inputValue')) || ''
+    localStorage.getItem('inputValue') || ''
   );
   const [errorMessage, setErrorMessasge] = useState('');
+  const [btnDisabled, setBtnDisabled] = useState(false);
 
   useEffect(() => {
-    if (foundMovies !== null && Object.keys(foundMovies).length !== 0) {
-      setShowedMovies(foundMovies.slice(0, props.countMovies));
-      setHiddenMovies(foundMovies.slice(props.countMovies));
-    } else {
-      setShowedMovies([]);
-    }
-  }, [foundMovies, props.countMovies]);
+      setShowedMovies(resultFilteredMovies.slice(0, props.countMovies));
+      setHiddenMovies(resultFilteredMovies.slice(props.countMovies));
+  }, [resultFilteredMovies, props.countMovies]);
 
   useEffect(() => {
-    const shortMovies = filterMovies(moviesFromApi, inputValue, filterChecked);
-    setFoundMovies(shortMovies);
+    const filteredShorts = filterShorts(foundByNameMovies, filterChecked)
+    setResultFilteredMovies(filteredShorts)
     localStorage.setItem('filterChecked', filterChecked);
-  }, [filterChecked]);
+  }, [filterChecked, foundByNameMovies]);
+
+  useEffect(() => {
+    if (allMoviesFromApi != null && Object.keys(allMoviesFromApi).length > 0)
+    {
+      setResults(allMoviesFromApi)
+    }
+  }, [allMoviesFromApi])
 
   function handleChangeSearch(e) {
     setInputValue(e.target.value);
@@ -56,35 +65,39 @@ function Movies(props) {
     setFilterChecked(e.target.checked);
   }
 
-  function handleSearch(e) {
+  function setResults (allMovies) {
+    const foundByNameMovies = filterMoviesByName(allMovies, inputValue);
+    localStorage.setItem('foundMovies', JSON.stringify(foundByNameMovies));
+    setFoundByNameMovies(foundByNameMovies);
+    setResultFilteredMovies(filterShorts(foundByNameMovies, filterChecked));
+  }
+
+  const handleSearch = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
-    localStorage.setItem('inputValue', inputValue);
-
-    let movieListFromApi = JSON.parse(localStorage.getItem('movies'));
-    setMoviesFromApi(movieListFromApi);
-
-    if (
-      movieListFromApi === null ||
-      Object.keys(movieListFromApi).length === 0
-    ) {
-      props.getMoviesFromApi();
-      props.errorMessage === '' ? setServerErr(false) : setServerErr(true);
-      movieListFromApi = JSON.parse(localStorage.getItem('movies'));
-      setMoviesFromApi(movieListFromApi);
-    };
-
-    let foundMovieList = filterMovies(movieListFromApi, inputValue, filterChecked);
-    localStorage.setItem('foundMovies', JSON.stringify(foundMovieList));
-    setFoundMovies(foundMovieList);
-
-    setIsLoading(false);
-
     if (inputValue === '') {
       setErrorMessasge(EMPTY_INPUT_ERR_MESSAGE);
-    } else {
-      setErrorMessasge('');
+      setIsValid(false);
+      setBtnDisabled(true);
+      return;
     }
+    else {
+      setErrorMessasge('');
+      setIsValid(true);
+      setBtnDisabled(false);
+
+      if (allMoviesFromApi === null || Object.keys(allMoviesFromApi).length === 0){
+        setIsLoading(true);
+        const allMoviesFromApiResult = await props.getMoviesFromApi();
+        setResults(allMoviesFromApiResult)
+        setIsLoading(false);
+        setAllMoviesFromApi(allMoviesFromApiResult);
+      }
+      else{
+        setResults(allMoviesFromApi)
+      }
+    localStorage.setItem('inputValue', inputValue);
+    }
+
   }
 
   function handleShowMore(e) {
@@ -105,6 +118,8 @@ function Movies(props) {
         errorMessage={errorMessage}
         onSubmit={handleSearch}
         value={inputValue}
+        isValid={isValid}
+        disabled={btnDisabled}
         />
         {isLoading === true ? <Preloader /> : null}
         {(showedMovies === null || Object.keys(showedMovies).length === 0) &&

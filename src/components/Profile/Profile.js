@@ -4,7 +4,7 @@ import './Profile.css';
 import Header from '../Header/Header';
 import Input from '../Input/Input';
 
-import { CurrentUserContext } from '../../context/CurrentUserCotext';
+import { CurrentUserContext } from '../../context/CurrentUserContext';
 
 import FormValidator from '../../hook/Validator';
 
@@ -18,9 +18,9 @@ const [isEditProfile, setEditProfile] = useState(false);
 useEffect(() => {
   setValues({
     name: currentUser.name,
-    email: currentUser.email
-  })
-}, [setValues, currentUser.name, currentUser.email])
+    email: currentUser.email,
+  });
+}, [setValues, currentUser.name, currentUser.email]);
 
 function handleEditProfileClick() {
   setEditProfile(true);

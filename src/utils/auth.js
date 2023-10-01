@@ -17,8 +17,8 @@ export default class Auth {
       headers: this._headers,
       credentials: 'include',
       body: JSON.stringify({ name, email, password })
-      .then((res) => this._checkResponse(res))
     })
+    .then((res) => this._checkResponse(res))
   }
 
   login(email, password) {
@@ -27,8 +27,8 @@ export default class Auth {
       headers: this._headers,
       credentials: 'include',
       body: JSON.stringify({ email, password })
-      .then((res) => this._checkResponse(res))
     })
+    .then((res) => this._checkResponse(res))
   }
 
   getCurrentUser() {
@@ -43,7 +43,7 @@ export default class Auth {
   loggout() {
     return fetch(`${this._url}/signout`, {
       method: 'GET',
-      headers: {'Content-Type': 'application/json', Accept: 'application/json'},
+      headers: this._headers,
       credentials: 'include',
     })
     .then((res) => this._checkResponse(res))
