@@ -62,7 +62,7 @@ export default class MainApi {
 }
 
 export const mainApi = new MainApi({
-  // url: 'https://api.movie-exp.kole4kina.nomoredomainsicu.ru',
-  url: 'http://localhost:3000',
+  url: 'https://api.movie-exp.kole4kina.nomoredomainsicu.ru',
+  // url: 'http://localhost:3000',
   headers: {'Content-Type': 'application/json'}
 });
