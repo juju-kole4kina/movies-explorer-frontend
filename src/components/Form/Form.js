@@ -21,7 +21,7 @@ function Form(props) {
         <span className="form__error-message">{props.errorMessage || ''}</span>
           <Button
             type="submit"
-            className={`button_type_form-submit ${props.isValid === false ? "button_type_disabled" : "button-hover"}`}
+            className={`button_type_form-submit ${props.disabled ? "button_type_disabled" : "button-hover"}`}
             buttonText={props.buttonText}
             disabled={props.disabled}
           />
