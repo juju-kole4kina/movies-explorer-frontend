@@ -315,6 +315,7 @@ function closePopup() {
                     duration={changeFormatTime}
                     setSavedMovies={setSavedMovies}
                     onDeleted={handleDeleteSavedMovie}
+                    getSavedMovies={getSavedMovies}
                   />
                 }
               />

@@ -26,8 +26,11 @@ function SavedMovies(props) {
   const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
-      setFilteredMovies(filterShorts(savedMovies,filterChecked));
+    setFilteredMovies(filterShorts(savedMovies,filterChecked));
+    setFilteredMovies(filterMoviesByName(savedMovies,inputValue));
   }, [savedMovies, filterChecked])
+
+
 
   function handleChangeSerch(e) {
     setInputValue(e.target.value);
