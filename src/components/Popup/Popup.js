@@ -1,9 +1,14 @@
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
+import './Popup.css';
 
 import stausErrIcon from '../../images/register-status-err.png';
 import statusOkIcon from '../../images/resister-srarus-ok.png';
 
 function Popup(props) {
+  const location = useLocation();
+
   useEffect(() => {
     if (!props.isOpen) return;
     function closeByEscape(e) {
@@ -24,7 +29,7 @@ function Popup(props) {
 
   return(
     <section
-      className={`popup popup_type_${props.name} ${props.isOpen ? "popup_opened" : ""}`}
+      className={`popup popup_type_verification ${props.isOpen ? "popup_opened" : ""}`}
       onClick={handleOverlay}
     >
       <div className="popup__container">
@@ -34,7 +39,7 @@ function Popup(props) {
           alt={props.status ? "Статус ОК" : "Статус неОК"}
           src={props.status ? statusOkIcon : stausErrIcon}
         />
-        <p className="popup__status-text">{props.status ? "Данные успешно сохранены!" : "Что-то пошло не так! Попробуйте ещё раз"}</p>
+        <p className="popup__status-text">{props.status ? (location.pathname === '/profile' ? "Данные успешно сохранены!" : "Вы успешно зарегестрировались!") : "Что-то пошло не так! Попробуйте ещё раз"}</p>
       </div>
     </section>
   )

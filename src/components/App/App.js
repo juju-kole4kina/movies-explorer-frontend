@@ -273,8 +273,6 @@ function closePopup() {
                 isRegister={handleRegister}
                 isLoading={isLoading}
                 errorMessage={errMessage}
-                onClose={closePopup}
-                isOpen={isInfoTooltip}
               />
             }
           />
@@ -338,8 +336,6 @@ function closePopup() {
                     isSignout={handleSignout}
                     errMessage={errMessage}
                     isLoading={isLoading}
-                    onClose={closePopup}
-                    isOpen={isInfoTooltip}
                   />
                 }
               />
