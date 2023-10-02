@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
 
 import './Login.css';
 import Form from '../Form/Form';
@@ -12,6 +13,10 @@ function Login(props) {
   useEffect(() => {
     resetForm();
   }, [resetForm]);
+
+  if (props.isLoggedIn === true) {
+    return <Navigate to="/movies" replace />
+  }
 
   function handleSubmit(e) {
     const { email, password } = values;
