@@ -30,7 +30,10 @@ import {
   COUNT_MOVIES_520,
   COUNT_MOVIES_ALSO_1280,
   COUNT_MOVIES_ALSO_950,
-  COUNT_MOVIES_ALSO_520
+  COUNT_MOVIES_ALSO_520,
+  WIDTH_DEFAULT,
+  WIDTH_MIDDLE,
+  WIDTH_SMALL,
 } from '../../utils/constants';
 
 
@@ -96,13 +99,13 @@ function getSavedMovies() {
 function onResize() {
   const width = window.innerWidth;
 
-  if (width <= 520) {
+  if (width <= WIDTH_SMALL) {
     setCountMovies(COUNT_MOVIES_520);
     setCountMoviesAlso(COUNT_MOVIES_ALSO_520);
-  } else if (width <= 950) {
+  } else if (width <= WIDTH_MIDDLE) {
     setCountMovies(COUNT_MOVIES_950);
     setCountMoviesAlso(COUNT_MOVIES_ALSO_950);
-  } else if (width <= 1280) {
+  } else if (width <= WIDTH_DEFAULT) {
     setCountMovies(COUNT_MOVIES_1280);
     setCountMoviesAlso(COUNT_MOVIES_ALSO_1280);
   } else {

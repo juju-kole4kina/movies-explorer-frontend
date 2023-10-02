@@ -8,6 +8,10 @@ export const REGISTER_ERR_MESSAGE = 'При регистрации пользо�
 export const UPDATE_ERR_MESSAGE = 'При обновлении профиля произошла ошибка.';
 export const SERVER_ERR_MESSAGE = 'На сервере произошла ошибка';
 
+export const WIDTH_DEFAULT = 1280;
+export const WIDTH_MIDDLE = 950;
+export const WIDTH_SMALL = 520;
+
 export const COUNT_MOVIES_1280 = 12;
 export const COUNT_MOVIES_950 = 8;
 export const COUNT_MOVIES_520 = 5;
@@ -15,3 +19,5 @@ export const COUNT_MOVIES_520 = 5;
 export const COUNT_MOVIES_ALSO_1280 = 8;
 export const COUNT_MOVIES_ALSO_950 = 8;
 export const COUNT_MOVIES_ALSO_520 = 8;
+
+export const MOVIE_DURATION = 40;
