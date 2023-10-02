@@ -1,0 +1,77 @@
+.popup {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0.35s ease, opacity 0.35s ease;
+}
+
+.popup__container {
+  position: relative;
+  margin: 0 20px;
+  border-radius: 10px;
+  padding: 37px 36px;
+  width: 100%;
+  max-width: 430px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.popup_opened {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup__status-text {
+  margin-bottom: 20px;
+  font-weight: 900;
+  font-size: 24px;
+  text-align: center;
+  color: #000;
+}
+
+.popup__exit-btn {
+  position: absolute;
+  right: -40px;
+  top: -40px;
+  border: none;
+  width: 32px;
+  height: 32px;
+  background-image: center / cover url('../../images/icons/Close-Icon.svg');
+  transition: opacity 0.5s ease;
+  cursor: pointer;
+}
+
+.popup__exit-btn:hover {
+  opacity: 0.6;
+}
+
+@media (max-width: 720px) {
+  .popup__exit-btn {
+    right: 0;
+    width: 25px;
+    height: 25px;
+  }
+}
+
+@media (max-width: 420px) {
+  .popup__container {
+    padding: 25px 22px;
+  }
+}
+
+@media (max-width: 386px) {
+  .popup__exit-btn {
+    top: -36px;
+    width: 20px;
+    height: 20px;
+  }
+}

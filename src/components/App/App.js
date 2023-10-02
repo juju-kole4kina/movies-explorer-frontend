@@ -11,6 +11,7 @@ import Register from "../Register/Register";
 import Login from "../Login/Login";
 import PageNotFound from "../NotFoundPage/NotFoundPage";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import Popup from "../Popup/Popup";
 
 import { CurrentUserContext } from "../../context/CurrentUserContext";
 
@@ -43,6 +44,9 @@ const location = useLocation();
 
 const [isLoggedIn, setIsLoggedIn] = useState(false);
 const [isLoading, setIsLoading] = useState(false);
+const [isInfoTooltip, setInfoTooltip] = useState(false);
+const [isStatus, setStatus] = useState(false);
+
 const [currentUser, setCurrentUser] = useState({});
 
 const [savedMovies, setSavedMovies] = useState([]);
@@ -159,6 +163,8 @@ function handleRegister({ name, email, password }) {
     .createUser(name, email, password)
     .then(() => {
       setIsLoggedIn(true);
+      setInfoTooltip(true);
+      setStatus(true);
       navigate("/movies", { replace: true });
     })
     .catch((err) => {
@@ -169,6 +175,8 @@ function handleRegister({ name, email, password }) {
         setErrMessage(REGISTER_ERR_MESSAGE);
       }
       console.log("Error: " + err.status);
+      setInfoTooltip(true);
+      setStatus(false);
     })
     .finally(() => setIsLoading(false));
 }
@@ -228,6 +236,8 @@ function handleUpdateUserInfo({ name, email }) {
   mainApi
     .updateUserData(name, email)
     .then((data) => {
+      setInfoTooltip(true);
+      setStatus(true);
       setCurrentUser({
         name: data.name,
         email: data.email,
@@ -241,8 +251,14 @@ function handleUpdateUserInfo({ name, email }) {
         setErrMessage(UPDATE_ERR_MESSAGE);
       }
       console.log("Error: " + err.status);
+      setInfoTooltip(true);
+      setStatus(false);
     })
     .finally(() => setIsLoading(false));
+}
+
+function closePopup() {
+  setInfoTooltip(false);
 }
 
   return(
@@ -257,6 +273,8 @@ function handleUpdateUserInfo({ name, email }) {
                 isRegister={handleRegister}
                 isLoading={isLoading}
                 errorMessage={errMessage}
+                onClose={closePopup}
+                isOpen={isInfoTooltip}
               />
             }
           />
@@ -320,6 +338,8 @@ function handleUpdateUserInfo({ name, email }) {
                     isSignout={handleSignout}
                     errMessage={errMessage}
                     isLoading={isLoading}
+                    onClose={closePopup}
+                    isOpen={isInfoTooltip}
                   />
                 }
               />
@@ -327,6 +347,11 @@ function handleUpdateUserInfo({ name, email }) {
           />
           <Route path='*' element={<PageNotFound />} />
         </Routes>
+        <Popup
+          isOpen={isInfoTooltip}
+          onClose={closePopup}
+          status={isStatus}
+        />
       </div>
       </CurrentUserContext.Provider>
   );
