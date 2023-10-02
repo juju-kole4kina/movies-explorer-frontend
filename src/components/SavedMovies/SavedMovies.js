@@ -8,7 +8,6 @@ import MoviesCard from '../Movies/MoviesCard/MoviesCard';
 import SearchForm from '../Movies/SearchForm/SearchForm';
 import Preloader from '../Movies/Preloader/Preloader';
 import NoResult from '../Movies/NoResult/NoResult';
-// import filterMovies from '../../utils/filter';
 import { filterMoviesByName, filterShorts } from '../../utils/filter';
 
 import { EMPTY_INPUT_ERR_MESSAGE } from '../../utils/constants';
@@ -25,11 +24,6 @@ function SavedMovies(props) {
 
   const [errorMessage, setErrorMessage] = useState("");
   const [inputValue, setInputValue] = useState("");
-
-  // useEffect(() => {
-  //   const shortMovies = filterMovies(savedMovies, inputValue, filterChecked);
-  //   setFilteredMovies(shortMovies);
-  // }, [savedMovies, filterChecked]);
 
   useEffect(() => {
       setFilteredMovies(filterShorts(savedMovies,filterChecked));

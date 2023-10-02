@@ -16,8 +16,8 @@ export const COUNT_MOVIES_1280 = 12;
 export const COUNT_MOVIES_950 = 8;
 export const COUNT_MOVIES_520 = 5;
 
-export const COUNT_MOVIES_ALSO_1280 = 8;
-export const COUNT_MOVIES_ALSO_950 = 8;
-export const COUNT_MOVIES_ALSO_520 = 8;
+export const COUNT_MOVIES_ALSO_1280 = 3;
+export const COUNT_MOVIES_ALSO_950 = 2;
+export const COUNT_MOVIES_ALSO_520 = 2;
 
 export const MOVIE_DURATION = 40;
