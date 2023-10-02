@@ -162,10 +162,7 @@ function handleRegister({ name, email, password }) {
   auth
     .createUser(name, email, password)
     .then(() => {
-      setIsLoggedIn(true);
-      setInfoTooltip(true);
-      setStatus(true);
-      navigate("/movies", { replace: true });
+      handleLogin({ email, password })
     })
     .catch((err) => {
       if (err.status === 409) {
@@ -175,8 +172,6 @@ function handleRegister({ name, email, password }) {
         setErrMessage(REGISTER_ERR_MESSAGE);
       }
       console.log("Error: " + err.status);
-      setInfoTooltip(true);
-      setStatus(false);
     })
     .finally(() => setIsLoading(false));
 }
@@ -226,6 +221,7 @@ function handleSignout() {
       localStorage.removeItem("movies");
       localStorage.removeItem("filterChecked");
       localStorage.removeItem("resultFilteredMovies");
+      localStorage.removeItem('foundMovies');
       navigate("/", { replace: true });
     })
     .catch((err) => console.log("Error: " + err.status));

@@ -9,7 +9,6 @@ import MoviesCard from './MoviesCard/MoviesCard';
 import Preloader from './Preloader/Preloader';
 import NoResult from './NoResult/NoResult';
 import filterMovies from '../../utils/filter';
-// import FormValidator from '../../hook/Validator';
 import { filterMoviesByName, filterShorts } from '../../utils/filter';
 
 import { EMPTY_INPUT_ERR_MESSAGE } from '../../utils/constants.js';
