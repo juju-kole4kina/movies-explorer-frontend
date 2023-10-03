@@ -65,7 +65,7 @@ function MoviesCard(props) {
             }`}
         />
       </div>
-      <Link to={link} className="movie-card__link" target="_blank">
+      <a href={link} className="movie-card__link" target="_blank" rel="noreferrer">
       <img
         className="movie-card__image"
         alt={alt}
@@ -80,7 +80,7 @@ function MoviesCard(props) {
           : `${imgMiddle} 768w, ${imgSmall} 320w`
         }
       />
-      </Link>
+      </a>
     </article>
   );
 }

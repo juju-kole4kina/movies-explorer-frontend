@@ -18,6 +18,7 @@ function SavedMovies(props) {
   const [isLoading, setIsLoading] = useState(false);
   const [serverErr, setServerErr] = useState(false);
   const [filterChecked, setFilterChecked] = useState(false);
+  const [isSearch, setIsSearch] = useState(false);
 
   const [foundMovies, setFoundMovies] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState([]);
@@ -26,11 +27,9 @@ function SavedMovies(props) {
   const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
-    setFilteredMovies(filterShorts(savedMovies,filterChecked));
-    setFilteredMovies(filterMoviesByName(savedMovies,inputValue));
+
+    setFilteredMovies(filterShorts(filterMoviesByName(savedMovies, inputValue),filterChecked));
   }, [savedMovies, filterChecked])
-
-
 
   function handleChangeSerch(e) {
     setInputValue(e.target.value);
@@ -44,6 +43,7 @@ function SavedMovies(props) {
     e.preventDefault();
     const foundMovies = filterMoviesByName(savedMovies, inputValue);
     setFilteredMovies(foundMovies);
+    setIsSearch(true);
 
     if (inputValue === "") {
       setErrorMessage(EMPTY_INPUT_ERR_MESSAGE);
@@ -66,7 +66,7 @@ function SavedMovies(props) {
         />
         {isLoading === true ? <Preloader /> : null}
         {(filteredMovies === null || Object.keys(filteredMovies).length === 0) &&
-        !isLoading ? (<NoResult serverErr={serverErr} />) : (
+        !isLoading ? (<NoResult serverErr={serverErr} isSearch={isSearch} />) : (
           <MoviesCardList movies={foundMovies}>
           {filteredMovies.map((movie) => (
             <li key={movie._id}>

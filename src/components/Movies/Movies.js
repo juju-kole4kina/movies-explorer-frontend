@@ -22,6 +22,7 @@ function Movies(props) {
   let [allMoviesFromApi, setAllMoviesFromApi] = useState([]);
   const [serverErr, setServerErr] = useState(false);
   const [isValid, setIsValid] = useState(false);
+  const [isSearch, setIsSearch] = useState(false);
 
   const [foundByNameMovies, setFoundByNameMovies] = useState(
     JSON.parse(localStorage.getItem('foundMovies')) || []
@@ -53,6 +54,7 @@ function Movies(props) {
     if (allMoviesFromApi != null && Object.keys(allMoviesFromApi).length > 0)
     {
       setResults(allMoviesFromApi)
+
     }
   }, [allMoviesFromApi])
 
@@ -90,9 +92,11 @@ function Movies(props) {
         setResults(allMoviesFromApiResult)
         setIsLoading(false);
         setAllMoviesFromApi(allMoviesFromApiResult);
+        setIsSearch(true);
       }
       else{
         setResults(allMoviesFromApi)
+        setIsSearch(true);
       }
     localStorage.setItem('inputValue', inputValue);
     }
@@ -117,13 +121,11 @@ function Movies(props) {
         errorMessage={errorMessage}
         onSubmit={handleSearch}
         value={inputValue}
-        isValid={isValid}
-        disabled={btnDisabled}
         />
         {isLoading === true ? <Preloader /> : null}
         {(showedMovies === null || Object.keys(showedMovies).length === 0) &&
         !isLoading ? (
-          <NoResult serverErr={serverErr} />
+          <NoResult serverErr={serverErr} isSearch={isSearch} />
         ) : (
           <MoviesCardList
             movies={showedMovies}

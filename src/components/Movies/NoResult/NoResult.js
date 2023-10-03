@@ -11,7 +11,7 @@ function NoResult(props) {
           или сервер недоступен. Подождите немного и попробуйте ещё раз
         </p>
       ) : (
-        <p className="no-result__message">Ничего не найдено</p>
+        <p className="no-result__message">{props.isSearch ? "Ничего не найдено" : ""}</p>
       )}
     </div>
   );
