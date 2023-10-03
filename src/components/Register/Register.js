@@ -14,6 +14,8 @@ function Register(props) {
     resetForm();
   }, [resetForm]);
 
+  useEffect(() => props.setErrMessage(''), [props.setErrMessage]);
+
   if (props.isLoggedIn === true) {
     return <Navigate to="/movies" replace />
   }

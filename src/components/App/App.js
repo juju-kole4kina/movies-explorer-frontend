@@ -270,6 +270,7 @@ function closePopup() {
                 isLoading={isLoading}
                 isLoggedIn={isLoggedIn}
                 errorMessage={errMessage}
+                setErrMessage={setErrMessage}
               />
             }
           />
@@ -281,6 +282,7 @@ function closePopup() {
                 isLoggedIn={isLoggedIn}
                 errorMessage={errMessage}
                 isLoading={isLoading}
+                setErrMessage={setErrMessage}
               />
             }
           />
