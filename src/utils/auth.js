@@ -51,7 +51,7 @@ export default class Auth {
 }
 
 export const auth = new Auth({
-  // url: 'https://api.movie-exp.kole4kina.nomoredomainsicu.ru',
-  url: 'http://localhost:3000',
+  url: 'https://api.movie-exp.kole4kina.nomoredomainsicu.ru',
+  // url: 'http://localhost:3000',
   headers: {'Content-Type': 'application/json', Accept: 'application/json'}
 })
