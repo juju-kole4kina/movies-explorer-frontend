@@ -89,7 +89,6 @@ function SavedMovies(props) {
       </main>
       <Footer />
     </>
-
   );
 }
 

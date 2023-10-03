@@ -40,7 +40,7 @@ function handleSubmit(e) {
 
   return(
     <>
-    < Header isLoggedIn={props.isLoggedIn} />
+    <Header isLoggedIn={props.isLoggedIn} />
     <main className="profile">
       <section className="profile__section">
         <h2 className="profile-header">Привет, {currentUser.name}!</h2>
@@ -71,7 +71,6 @@ function handleSubmit(e) {
           </div>
         </form>
       </section>
-
     </main>
   </>
   );
