@@ -35,7 +35,7 @@ function Register(props) {
         linkText="Войти"
         onSubmit={handleSubmit}
         disabled={!isValid}
-        errorMessage={props.errMessage}
+        errorMessage={props.errorMessage}
         isValid={isValid}
       >
         <Input formName="form" value={values.name || []} onChange={handleChange} pattern="^[а-яА-ЯёЁa-zA-Z \-]+$" errorName={errors.name || ''} name="name" id="reg-name" label="Имя" type="text" placeholder="Ваше имя" min="2" max="30" required />

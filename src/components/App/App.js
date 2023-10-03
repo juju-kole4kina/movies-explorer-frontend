@@ -268,7 +268,7 @@ function closePopup() {
               <Register
                 isRegister={handleRegister}
                 isLoading={isLoading}
-                // isLoggedIn={isLoggedIn}
+                isLoggedIn={isLoggedIn}
                 errorMessage={errMessage}
               />
             }
@@ -278,8 +278,8 @@ function closePopup() {
             element={
               <Login
                 isLogin={handleLogin}
-                // isLoggedIn={isLoggedIn}
-                errMessage={errMessage}
+                isLoggedIn={isLoggedIn}
+                errorMessage={errMessage}
                 isLoading={isLoading}
               />
             }
