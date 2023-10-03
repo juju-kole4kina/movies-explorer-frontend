@@ -162,6 +162,8 @@ function handleRegister({ name, email, password }) {
   auth
     .createUser(name, email, password)
     .then(() => {
+      setInfoTooltip(true);
+      setStatus(true);
       handleLogin({ email, password })
     })
     .catch((err) => {
@@ -172,6 +174,8 @@ function handleRegister({ name, email, password }) {
         setErrMessage(REGISTER_ERR_MESSAGE);
       }
       console.log("Error: " + err.status);
+      setInfoTooltip(true);
+      setStatus(false);
     })
     .finally(() => setIsLoading(false));
 }
@@ -193,6 +197,8 @@ function handleLogin({ email, password }) {
         setErrMessage(AUTH_UNCORRECT_TOKEN_ERR_MESSAGE);
       }
       console.log("Error: " + err.status);
+      setInfoTooltip(true);
+      setStatus(false);
     })
     .finally(() => setIsLoading(false));
 }
