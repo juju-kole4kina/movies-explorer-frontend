@@ -199,12 +199,10 @@
     box-sizing: border-box;
     background-color: rgba(255, 255, 255, 1);
     transition: right 0.3s ease 0s;
-
   }
 
   .menu__menu-list_isLogged_active {
     right: 0;
-
   }
 
   .menu__rigth-menu-list {
@@ -228,10 +226,14 @@
     position: fixed;
     right: 0;
     top: 0;
-    z-index: 3;
+    z-index: -3;
     width: 100%;
     height: 100%;
     transition: background-color 0.3s ease 0s;
+  }
+
+  .menu_isLogged_active {
+    z-index: 3;
   }
 
   .menu_mobile-menu-active {

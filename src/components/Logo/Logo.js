@@ -6,9 +6,7 @@ import './Logo.css';
 
 function Logo(props) {
   return(
-    <>
-      <Link to="/" className="logo link-hover"><img src={logo} alt="Лого" /></Link>
-    </>
+    <Link to="/" className="logo link-hover"><img src={logo} alt="Лого" /></Link>
   );
 }
 
