@@ -54,7 +54,7 @@ function Movies(props) {
     if (allMoviesFromApi != null && Object.keys(allMoviesFromApi).length > 0)
     {
       setResults(allMoviesFromApi)
-
+      setIsSearch(true);
     }
   }, [allMoviesFromApi])
 

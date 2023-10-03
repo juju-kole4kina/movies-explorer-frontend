@@ -27,7 +27,6 @@ function SavedMovies(props) {
   const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
-
     setFilteredMovies(filterShorts(filterMoviesByName(savedMovies, inputValue),filterChecked));
   }, [savedMovies, filterChecked])
 
