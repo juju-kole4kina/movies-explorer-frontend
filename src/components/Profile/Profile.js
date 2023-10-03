@@ -62,8 +62,8 @@ function handleSubmit(e) {
         </div>
         <form onSubmit={handleSubmit} method="POST" className={`profile__form-container ${isEditProfile ? "profile__form-container_active" : ""}`}>
           <fieldset className="profile__input profile-input-list">
-            <Input name="name" value={values.name || []} onChange={handleChange} pattern="^[а-яА-ЯёЁa-zA-Z \-]+$" id="input-name" label="Имя" type="text" placeholder="Ваше имя" min="2" max="30" formName="profile" required />
-            <Input name="email" value={values.email || []} onChange={handleChange} pattern="^([^ ]+@[^ ]+\.[a-z]{2,6}|)$" id="imput-email" label="Email" type="email" placeholder="example@example.ru" formName="profile" required />
+            <Input name="name" disabled={props.isLoading} value={values.name || []} onChange={handleChange} pattern="^[а-яА-ЯёЁa-zA-Z \-]+$" id="input-name" label="Имя" type="text" placeholder="Ваше имя" min="2" max="30" formName="profile" required />
+            <Input name="email" disabled={props.isLoading} value={values.email || []} onChange={handleChange} pattern="^([^ ]+@[^ ]+\.[a-z]{2,6}|)$" id="imput-email" label="Email" type="email" placeholder="example@example.ru" formName="profile" required />
           </fieldset>
           <div className="profile__form-footer">
             <span className="profile__error-message">{props.errMessage || errors.name || errors.email || ''}</span>

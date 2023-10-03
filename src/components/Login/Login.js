@@ -40,8 +40,8 @@ function Login(props) {
         errorMessage={props.errorMessage}
         isValid={isValid}
       >
-        <Input formName="form" value={values.email || []} onChange={handleChange} errorName={errors.email || ''} pattern="^([^ ]+@[^ ]+\.[a-z]{2,6}|)$" name="email" id="reg-email" label="E-mail" type="email" placeholder="example@example.com" min="2" max="30" required />
-        <Input formName="form" value={values.password || []} onChange={handleChange} errorName={errors.password || ''} name="password" id="reg-password" label="Пароль" type="password" placeholder="Введите пароль" min="8" max="30" required />
+        <Input formName="form" disabled={props.isLoading} value={values.email || []} onChange={handleChange} errorName={errors.email || ''} pattern="^([^ ]+@[^ ]+\.[a-z]{2,6}|)$" name="email" id="reg-email" label="E-mail" type="email" placeholder="example@example.com" min="2" max="30" required />
+        <Input formName="form" disabled={props.isLoading} value={values.password || []} onChange={handleChange} errorName={errors.password || ''} name="password" id="reg-password" label="Пароль" type="password" placeholder="Введите пароль" min="8" max="30" required />
       </Form>
     </main>
   );
