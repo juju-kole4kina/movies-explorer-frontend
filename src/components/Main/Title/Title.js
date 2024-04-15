@@ -4,9 +4,7 @@ import './Title.css';
 
 function Title(props) {
   return(
-    <>
-      <h2 className={`section-title ${props.type}`}>{props.title}</h2>
-    </>
+    <h2 className={`section-title ${props.type}`}>{props.title}</h2>
   );
 }
 

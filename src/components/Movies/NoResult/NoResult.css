@@ -12,3 +12,7 @@
   line-height: 1;
   color: rgba(160, 160, 160, 1);
 }
+
+.no-result__message_error {
+  color: rgba(238, 52, 101, 1);
+}

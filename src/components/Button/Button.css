@@ -5,11 +5,11 @@
   border: none;
   padding: 0;
   transition: opacity 0.3s ease;
-  cursor: pointer;
 }
 
 .button:hover {
   opacity: 0.8;
+  cursor: pointer;
 }
 
 .button_type_more {
@@ -20,6 +20,15 @@
   font-size: 12px;
   line-height: 1;
   background-color: rgba(249, 249, 249, 1);
+}
+
+.button_type_disabled {
+  opacity: 0.4;
+}
+
+.button_type_disabled:hover {
+  opacity: 0.4;
+  cursor: default;
 }
 
 .button_type_more-disabled {
@@ -101,7 +110,7 @@
 }
 
 .button_type_form-submit {
-  margin: 0 0 16px;
+  margin: 5px 0 16px;
   border-radius: 3px;
   width: 100%;
   height: 45px;
